@@ -9,14 +9,16 @@
 :root{--bg:#0a0a0f;--sur:#13131a;--car:#1c1c28;--red:#ff3a3a;--ora:#ff8c00;--grn:#00e676;--txt:#f0f0f0;--mut:#666;--bdr:#2a2a3a;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;}
-.screen{display:none;flex-direction:column;min-height:100vh;padding:24px 20px;}
+.screen{display:none;flex-direction:column;min-height:100vh;padding:20px;}
 .screen.active{display:flex;}
+
 /* HOME */
 #home{align-items:center;justify-content:center;gap:32px;background:radial-gradient(ellipse at 50% -10%,#3a0000,var(--bg) 65%);}
 @keyframes glow{0%,100%{filter:drop-shadow(0 0 16px rgba(255,58,58,.4))}50%{filter:drop-shadow(0 0 36px rgba(255,58,58,.8))}}
 .logo-wrap{text-align:center;animation:glow 2.5s ease-in-out infinite;}
 .logo{font-family:'Bebas Neue';font-size:clamp(70px,20vw,120px);letter-spacing:8px;line-height:1;color:var(--red);text-shadow:0 0 60px rgba(255,58,58,.5),0 4px 0 #800;}
 .logo-sub{font-family:'Bebas Neue';font-size:clamp(14px,4vw,24px);letter-spacing:16px;color:var(--ora);margin-top:4px;}
+
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border:none;border-radius:6px;font-family:'Noto Sans JP';font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;width:100%;max-width:340px;letter-spacing:1px;}
 .br{background:var(--red);color:#fff;box-shadow:0 0 20px rgba(255,58,58,.3);}
@@ -24,6 +26,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt)
 .bg{background:transparent;color:var(--txt);border:1px solid var(--bdr);}
 .bg:active{background:var(--sur);}
 .bs{padding:8px 18px;font-size:13px;max-width:none;width:auto;}
+
 /* FORMS */
 .stitle{font-family:'Bebas Neue';font-size:28px;letter-spacing:5px;color:var(--red);text-align:center;}
 .flbl{font-size:11px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;margin-bottom:8px;}
@@ -32,6 +35,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt)
 .or{display:flex;align-items:center;gap:12px;width:100%;max-width:340px;color:var(--mut);font-size:12px;letter-spacing:2px;}
 .or::before,.or::after{content:'';flex:1;height:1px;background:var(--bdr);}
 .col{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;}
+
 /* WAITING */
 .codebox{background:var(--sur);border:2px solid var(--red);border-radius:12px;padding:18px 28px;text-align:center;}
 .code{font-family:'Bebas Neue';font-size:60px;letter-spacing:12px;color:var(--red);line-height:1;}
@@ -40,68 +44,92 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt)
 .pdot{width:8px;height:8px;border-radius:50%;background:var(--grn);flex-shrink:0;}
 .cntbtn{width:46px;height:46px;border-radius:6px;border:2px solid var(--bdr);background:var(--sur);color:var(--txt);font-size:18px;font-family:'Bebas Neue';cursor:pointer;transition:all .15s;}
 .cntbtn.on{border-color:var(--red);color:var(--red);background:rgba(255,58,58,.1);}
+
 /* ROLE */
-#role{align-items:center;justify-content:center;gap:20px;background:var(--bg);}
+#role{align-items:center;justify-content:center;gap:20px;}
 .rcard-wrap{perspective:900px;}
 .rcard{width:min(78vw,300px);height:190px;border-radius:16px;cursor:pointer;transition:transform .6s;transform-style:preserve-3d;position:relative;}
 .rcard.flip{transform:rotateY(180deg);}
 .rface{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
 .rfront{background:var(--sur);border:2px solid var(--bdr);}
 .rback{transform:rotateY(180deg);}
-.rback.terrorist{background:linear-gradient(135deg,#3a0000,#1a0000);border:2px solid var(--red);}
-.rback.agent{background:linear-gradient(135deg,#003a1a,#001a0a);border:2px solid var(--grn);}
+.rback.police{background:linear-gradient(135deg,#003a1a,#001a0a);border:2px solid var(--grn);}
+.rback.bomber{background:linear-gradient(135deg,#3a0000,#1a0000);border:2px solid var(--red);}
 .ricon{font-size:52px;}
-.rname{font-family:'Bebas Neue';font-size:36px;letter-spacing:4px;}
-.rname.terrorist{color:var(--red);}
-.rname.agent{color:var(--grn);}
+.rname{font-family:'Bebas Neue';font-size:34px;letter-spacing:4px;}
+.rname.police{color:var(--grn);}
+.rname.bomber{color:var(--red);}
+
+/* PEEK — see your own cards before shuffling */
+#peek{align-items:center;gap:20px;padding-top:32px;}
+.peek-cards{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:400px;}
+.peek-card{width:64px;height:90px;border-radius:10px;border:2px solid var(--bdr);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;}
+.peek-card.kaiho{background:rgba(0,230,118,.15);border-color:var(--grn);color:var(--grn);}
+.peek-card.boom{background:rgba(255,58,58,.15);border-color:var(--red);color:var(--red);}
+.peek-card.shiin{background:var(--car);border-color:var(--bdr);color:var(--mut);}
+.peek-card .pci{font-size:28px;}
+
 /* GAME */
 #game{gap:14px;padding-top:14px;}
 .ghdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}
 .rbadge{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:var(--mut);}
-.tring-wrap{position:relative;width:110px;height:110px;margin:0 auto;}
-.tring-bg{fill:none;stroke:var(--bdr);stroke-width:8;}
-.tring{fill:none;stroke:var(--grn);stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:55px 55px;transition:stroke-dashoffset .5s linear,stroke .5s;}
-.tval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:38px;}
-.wtally{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;}
-.wdot{width:13px;height:13px;border-radius:50%;border:2px solid var(--bdr);background:var(--sur);transition:all .3s;}
-.wdot.cut{background:var(--grn);border-color:var(--grn);}
-.hand-box{background:var(--car);border:2px solid var(--ora);border-radius:12px;padding:14px;}
-.hand-title{font-size:11px;letter-spacing:3px;color:var(--ora);margin-bottom:10px;}
-.cards{display:flex;gap:8px;flex-wrap:wrap;}
-.hcard{width:54px;height:76px;border-radius:8px;border:2px solid var(--bdr);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;transition:all .2s;background:var(--sur);font-size:11px;color:var(--mut);font-weight:700;user-select:none;}
-.hcard.sel{border-color:var(--ora);box-shadow:0 0 14px rgba(255,140,0,.5);background:rgba(255,140,0,.08);}
-.hcard.safe{background:rgba(0,230,118,.12);border-color:var(--grn);cursor:default;}
-.hcard.bomb{background:rgba(255,58,58,.12);border-color:var(--red);cursor:default;}
-.hcard.done{opacity:.35;cursor:default;}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;}
-.ptile{background:var(--car);border:1px solid var(--bdr);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;}
-.ptile.me{border-color:var(--ora);}
-.tname{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tcards{display:flex;gap:3px;flex-wrap:wrap;}
-.mcard{width:22px;height:32px;border-radius:3px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:11px;background:var(--sur);}
-.mcard.safe{background:rgba(0,230,118,.15);border-color:var(--grn);}
-.mcard.bomb{background:rgba(255,58,58,.15);border-color:var(--red);}
-.banner-go{background:rgba(255,140,0,.1);border:1px solid var(--ora);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;font-weight:700;color:var(--ora);}
-.banner-wait{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;color:var(--mut);}
-.hr{height:1px;background:var(--bdr);width:100%;}
+.navrow{display:flex;gap:8px;}
+.nb{background:transparent;border:1px solid var(--bdr);color:var(--mut);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP';}
+
+/* Chip tally */
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+.chip{width:32px;height:32px;border-radius:50%;border:2px solid var(--bdr);background:var(--sur);transition:all .3s;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.chip.done{background:var(--grn);border-color:var(--grn);}
+
+/* Turn banner */
+.banner-nipper{background:rgba(255,140,0,.12);border:2px solid var(--ora);border-radius:10px;padding:12px 16px;text-align:center;}
+.banner-wait{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:10px;padding:12px 16px;text-align:center;color:var(--mut);font-size:13px;}
+
+/* Player areas — the main game board */
+.board{display:flex;flex-direction:column;gap:12px;}
+.p-area{background:var(--car);border:1px solid var(--bdr);border-radius:12px;padding:12px;}
+.p-area.is-me{border-color:var(--ora);}
+.p-area.nipper-holder{border-color:var(--red);box-shadow:0 0 16px rgba(255,58,58,.2);}
+.p-area-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.p-area-name{font-weight:700;font-size:14px;}
+.badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;}
+.badge-you{background:rgba(255,140,0,.2);color:var(--ora);border:1px solid var(--ora);}
+.badge-nipper{background:rgba(255,58,58,.2);color:var(--red);border:1px solid var(--red);}
+.badge-ready{background:rgba(0,230,118,.15);color:var(--grn);font-size:10px;padding:2px 8px;border-radius:20px;}
+.p-cards{display:flex;gap:6px;flex-wrap:wrap;}
+
+/* Cards in game */
+.gcard{width:52px;height:72px;border-radius:8px;border:2px solid var(--bdr);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:700;transition:all .2s;background:var(--sur);color:var(--mut);user-select:none;}
+.gcard.facedown-other{cursor:pointer;}
+.gcard.facedown-other:hover{border-color:var(--red);background:rgba(255,58,58,.08);transform:translateY(-3px);}
+.gcard.facedown-other:active{transform:scale(.95);}
+.gcard.facedown-mine{cursor:default;opacity:.7;}
+.gcard.revealed-kaiho{background:rgba(0,230,118,.15);border-color:var(--grn);color:var(--grn);cursor:default;}
+.gcard.revealed-boom{background:rgba(255,58,58,.15);border-color:var(--red);color:var(--red);cursor:default;}
+.gcard.revealed-shiin{background:rgba(255,255,255,.05);border-color:var(--bdr);color:var(--mut);cursor:default;opacity:.6;}
+.gcard .gci{font-size:22px;}
+
 /* RESULT */
 #result{align-items:center;justify-content:center;gap:22px;text-align:center;}
-#result.aw{background:radial-gradient(ellipse at center,#003a1a,var(--bg) 70%);}
-#result.tw{background:radial-gradient(ellipse at center,#3a0000,var(--bg) 70%);}
+#result.pw{background:radial-gradient(ellipse at center,#003a1a,var(--bg) 70%);}
+#result.bw{background:radial-gradient(ellipse at center,#3a0000,var(--bg) 70%);}
 @keyframes bounce{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
 .ricon2{font-size:80px;animation:bounce .7s ease-in-out infinite alternate;}
-.rtitle{font-family:'Bebas Neue';font-size:clamp(36px,10vw,64px);letter-spacing:6px;}
-.rtitle.ac{color:var(--grn);text-shadow:0 0 40px rgba(0,230,118,.5);}
-.rtitle.tc{color:var(--red);text-shadow:0 0 40px rgba(255,58,58,.5);}
+.rtitle{font-family:'Bebas Neue';font-size:clamp(36px,10vw,60px);letter-spacing:6px;}
+.rtitle.pc{color:var(--grn);text-shadow:0 0 40px rgba(0,230,118,.5);}
+.rtitle.bc{color:var(--red);text-shadow:0 0 40px rgba(255,58,58,.5);}
+
 /* RULES */
 #rules{gap:18px;max-width:600px;margin:0 auto;}
 .rsec{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:16px 18px;}
 .rsec h3{font-family:'Bebas Neue';font-size:20px;letter-spacing:3px;color:var(--red);margin-bottom:10px;}
 .rsec p,.rsec li{font-size:14px;line-height:1.8;color:#bbb;}
 .rsec ul{padding-left:16px;}
+.rsec li{margin-bottom:4px;}
 table{width:100%;border-collapse:collapse;font-size:13px;}
-th,td{padding:7px 10px;border:1px solid var(--bdr);text-align:center;}
+th,td{padding:7px 8px;border:1px solid var(--bdr);text-align:center;}
 th{background:var(--car);color:var(--mut);}
+
 /* MODAL */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
 .ov.open{opacity:1;pointer-events:all;}
@@ -111,8 +139,7 @@ th{background:var(--car);color:var(--mut);}
 .mbtns{display:flex;gap:10px;justify-content:center;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{width:32px;height:32px;border:3px solid var(--bdr);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;}
-.navrow{display:flex;gap:8px;flex-wrap:wrap;}
-.nb{background:transparent;border:1px solid var(--bdr);color:var(--mut);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP';}
+.hr{height:1px;background:var(--bdr);}
 </style>
 </head>
 <body>
@@ -134,15 +161,15 @@ th{background:var(--car);color:var(--mut);}
     <div class="logo-sub">タイムボム</div>
   </div>
   <div class="col">
-    <button class="btn br" id="B_TO_LOBBY">🎮 オンラインでプレイ</button>
-    <button class="btn bg" id="B_TO_RULES">📖 ルール説明</button>
+    <button class="btn br" id="B_LOBBY">🎮 オンラインでプレイ</button>
+    <button class="btn bg" id="B_RULES">📖 ルール説明</button>
   </div>
 </div>
 
 <!-- ═══ LOBBY ═══ -->
 <div id="lobby" class="screen">
-  <div class="stitle">ONLINE</div>
-  <div class="col" style="margin-top:16px;">
+  <div class="stitle" style="margin-bottom:16px;">ONLINE</div>
+  <div class="col">
     <div style="width:100%;max-width:340px;">
       <div class="flbl">あなたの名前</div>
       <input id="INP_NAME" class="inp" placeholder="名前を入力" maxlength="12" autocomplete="off">
@@ -155,7 +182,7 @@ th{background:var(--car);color:var(--mut);}
         style="letter-spacing:8px;font-family:'Bebas Neue';font-size:28px;text-align:center;" autocomplete="off">
     </div>
     <button class="btn bg" id="B_JOIN">🚪 部屋に入る</button>
-    <button class="btn bg bs" id="B_LOBBY_BACK">← 戻る</button>
+    <button class="btn bg bs" id="B_LBACK">← 戻る</button>
   </div>
 </div>
 
@@ -167,109 +194,95 @@ th{background:var(--car);color:var(--mut);}
     <div class="code" id="DISP_CODE">----</div>
     <button class="btn bg bs" id="B_COPY" style="margin-top:10px;">📋 コピー</button>
   </div>
-  <div id="HOST_CNT_WRAP" style="display:none;text-align:center;width:100%;max-width:340px;">
+  <div id="HOST_CNT" style="display:none;text-align:center;width:100%;max-width:340px;">
     <div class="flbl" style="margin-bottom:10px;">プレイ人数</div>
-    <div id="HOST_CNT_ROW" style="display:flex;gap:8px;justify-content:center;"></div>
+    <div id="CNT_ROW" style="display:flex;gap:8px;justify-content:center;"></div>
   </div>
   <div style="width:100%;max-width:340px;">
     <div class="flbl">参加中プレイヤー</div>
-    <div id="PLAYER_LIST" style="display:flex;flex-direction:column;gap:8px;"></div>
+    <div id="PLIST" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
-  <div id="HOST_START_WRAP" style="display:none;width:100%;max-width:340px;">
+  <div id="HOST_BTN" style="display:none;width:100%;max-width:340px;">
     <button class="btn br" id="B_START">▶ ゲーム開始！</button>
   </div>
-  <div id="GUEST_WAIT" style="display:none;color:var(--mut);font-size:14px;text-align:center;">
+  <div id="GUEST_MSG" style="display:none;color:var(--mut);font-size:14px;text-align:center;">
     ホストがゲームを開始するまでお待ちください…
   </div>
   <button class="btn bg bs" id="B_LEAVE_W">退出する</button>
 </div>
 
-<!-- ═══ ROLE (each player on own device) ═══ -->
+<!-- ═══ ROLE REVEAL ═══ -->
 <div id="role" class="screen">
-  <div style="font-size:12px;color:var(--mut);letter-spacing:3px;text-align:center;">YOUR SECRET ROLE</div>
-  <div style="font-weight:700;font-size:18px;text-align:center;" id="ROLE_PNAME"></div>
-  <div class="rcard-wrap">
+  <div style="font-size:12px;color:var(--mut);letter-spacing:3px;text-align:center;margin-bottom:4px;">YOUR SECRET ROLE</div>
+  <div style="font-weight:700;font-size:18px;text-align:center;margin-bottom:4px;" id="ROLE_NAME"></div>
+  <div class="rcard-wrap" style="margin:0 auto;">
     <div class="rcard" id="RCARD">
       <div class="rface rfront">
-        <div style="font-family:'Bebas Neue';font-size:20px;color:var(--mut);letter-spacing:4px;">タップしてめくる</div>
+        <div style="font-family:'Bebas Neue';font-size:18px;color:var(--mut);letter-spacing:4px;">タップしてめくる</div>
         <div style="font-size:40px;">🃏</div>
       </div>
       <div class="rface rback" id="RBACK">
-        <div class="ricon" id="RICON">🕵️</div>
-        <div class="rname" id="RNAME">エージェント</div>
+        <div class="ricon" id="RICON"></div>
+        <div class="rname" id="RNAME_TXT"></div>
       </div>
     </div>
   </div>
-  <div style="font-size:13px;color:var(--mut);text-align:center;max-width:260px;line-height:1.6;" id="RDESC"></div>
-  <div id="READY_WRAP" style="display:none;width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;align-items:center;">
-    <div style="font-size:13px;color:var(--mut);text-align:center;" id="READY_STATUS"></div>
-    <button class="btn br" id="B_READY">✅ 準備完了！</button>
+  <div style="font-size:13px;color:var(--mut);text-align:center;max-width:280px;margin:0 auto;line-height:1.6;" id="RDESC"></div>
+  <div id="ROLE_READY" style="display:none;width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px;align-items:center;">
+    <div style="font-size:13px;color:var(--mut);text-align:center;" id="ROLE_STATUS"></div>
+    <button class="btn br" id="B_ROLE_OK">✅ 確認した！</button>
+  </div>
+</div>
+
+<!-- ═══ PEEK (see your own cards before shuffle) ═══ -->
+<div id="peek" class="screen">
+  <div class="stitle">自分の手札を確認</div>
+  <div style="font-size:13px;color:var(--mut);text-align:center;line-height:1.6;max-width:320px;margin:0 auto;">
+    これがあなたの手札です。<br>
+    <strong style="color:var(--txt);">場所は覚えられません</strong> — 「確認した」を押すとシャッフルされます。
+  </div>
+  <div class="peek-cards" id="PEEK_CARDS" style="margin:0 auto;"></div>
+  <div style="width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px;align-items:center;">
+    <div style="font-size:13px;color:var(--mut);text-align:center;" id="PEEK_STATUS"></div>
+    <button class="btn br" id="B_PEEK_OK">🔀 確認した（シャッフル）</button>
   </div>
 </div>
 
 <!-- ═══ GAME ═══ -->
 <div id="game" class="screen">
   <div class="ghdr">
-    <div class="rbadge">ROUND <span id="G_ROUND">1</span>/<span id="G_TOTAL">?</span></div>
+    <div class="rbadge">ROUND <span id="G_ROUND">1</span>/4
+      &nbsp;<span style="font-size:13px;color:var(--mut);">(<span id="G_CUTS">0</span>/<span id="G_CUTS_NEED">?</span>カット)</span>
+    </div>
     <div class="navrow">
-      <button class="nb" id="B_RULES_M">📖</button>
-      <button class="nb" id="B_RESET_M">↩ リセット</button>
+      <button class="nb" id="B_RM">📖</button>
+      <button class="nb" id="B_RST_M">↩ リセット</button>
     </div>
   </div>
 
-  <!-- Timer -->
+  <!-- Chip tally -->
   <div style="text-align:center;">
-    <div class="tring-wrap">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle class="tring-bg" cx="55" cy="55" r="48"/>
-        <circle class="tring" id="TRING" cx="55" cy="55" r="48" stroke-dasharray="301.6" stroke-dashoffset="0"/>
-      </svg>
-      <div class="tval" id="TVAL">3:00</div>
-    </div>
-    <div id="TIMER_BTNS" style="display:none;gap:8px;justify-content:center;margin-top:8px;">
-      <button class="btn bg bs" id="B_TIMER_TOG">▶ 開始</button>
-      <button class="btn bg bs" id="B_TIMER_RST">↺ リセット</button>
-    </div>
-  </div>
-
-  <!-- Wire progress -->
-  <div style="text-align:center;">
-    <div style="font-size:11px;color:var(--mut);letter-spacing:2px;margin-bottom:6px;">
-      WIRES CUT: <span id="G_WCUT">0</span> / <span id="G_WTOT">?</span>
-    </div>
-    <div class="wtally" id="WTALLY"></div>
+    <div style="font-size:11px;color:var(--mut);letter-spacing:2px;margin-bottom:8px;">解除チップ</div>
+    <div class="chips" id="CHIPS"></div>
   </div>
 
   <div class="hr"></div>
+
+  <!-- Turn banner -->
   <div id="TURN_BANNER"></div>
 
-  <!-- My hand -->
-  <div class="hand-box">
-    <div class="hand-title">✋ 自分の手札</div>
-    <div class="cards" id="MY_HAND"></div>
-    <div style="margin-top:10px;display:flex;gap:8px;align-items:center;">
-      <button class="btn br bs" id="B_CUT" disabled>✂️ カット！</button>
-      <span id="CUT_HINT" style="font-size:12px;color:var(--mut);">カードを選んでください</span>
-    </div>
-  </div>
-
-  <!-- All players -->
-  <div style="font-size:11px;color:var(--mut);letter-spacing:2px;">ALL PLAYERS</div>
-  <div class="pgrid" id="PGRID"></div>
-
-  <div id="NEXT_ROUND_WRAP" style="display:none;text-align:center;">
-    <button class="btn br bs" id="B_NEXT_ROUND">次のラウンドへ →</button>
-  </div>
+  <!-- Board: all players -->
+  <div class="board" id="BOARD"></div>
 </div>
 
 <!-- ═══ RESULT ═══ -->
 <div id="result" class="screen">
   <div class="ricon2" id="R_ICON">🎉</div>
-  <div class="rtitle" id="R_TITLE">AGENTS WIN</div>
-  <div style="color:var(--mut);font-size:14px;" id="R_REASON"></div>
+  <div class="rtitle" id="R_TITLE"></div>
+  <div style="color:var(--mut);font-size:14px;text-align:center;" id="R_REASON"></div>
   <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;margin-top:8px;" id="R_ROLES"></div>
   <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;margin-top:16px;">
-    <button class="btn br" id="B_RESTART">もう一度プレイ</button>
+    <button class="btn br" id="B_AGAIN">もう一度プレイ</button>
     <button class="btn bg" id="B_LEAVE_R">部屋を出る</button>
   </div>
 </div>
@@ -278,40 +291,43 @@ th{background:var(--car);color:var(--mut);}
 <div id="rules" class="screen" style="padding-top:24px;">
   <div class="stitle">RULES</div>
   <div class="rsec">
-    <h3>🎯 目的</h3>
-    <p><strong>エージェント</strong>：全ての安全ワイヤーをカットして爆弾を解除する。<br>
-    <strong>テロリスト</strong>：爆弾カードをカットさせるか、時間切れにさせる。</p>
+    <h3>🎯 陣営と勝利条件</h3>
+    <ul>
+      <li>🚔 <strong>タイムポリス</strong>：全ての解除カードをカットする → 勝利</li>
+      <li>💣 <strong>ボマー団</strong>：BOOMカードをカットさせる、または4ラウンド終了 → 勝利</li>
+    </ul>
   </div>
   <div class="rsec">
-    <h3>🃏 カード構成</h3>
-    <table>
-      <tr><th>人数</th><th>テロリスト</th><th>エージェント</th><th>爆弾</th><th>安全ワイヤー</th></tr>
-      <tr><td>4</td><td>1</td><td>3</td><td>1</td><td>15</td></tr>
-      <tr><td>5</td><td>2</td><td>3</td><td>1</td><td>19</td></tr>
-      <tr><td>6</td><td>2</td><td>4</td><td>1</td><td>23</td></tr>
-      <tr><td>7</td><td>3</td><td>4</td><td>1</td><td>27</td></tr>
-      <tr><td>8</td><td>3</td><td>5</td><td>1</td><td>31</td></tr>
+    <h3>🃏 カード</h3>
+    <p>毎ラウンド全員に5枚ずつ配布。自分の内容を確認後、シャッフルして裏向きに並べる。</p>
+    <table style="margin-top:10px;">
+      <tr><th>人数</th><th>ボマー</th><th>ポリス</th><th>BOOM</th><th>解除</th><th>し～ん</th></tr>
+      <tr><td>4</td><td>1</td><td>3</td><td>1</td><td>4</td><td>15</td></tr>
+      <tr><td>5</td><td>2</td><td>3</td><td>1</td><td>5</td><td>19</td></tr>
+      <tr><td>6</td><td>2</td><td>4</td><td>1</td><td>6</td><td>23</td></tr>
+      <tr><td>7</td><td>3</td><td>4</td><td>1</td><td>7</td><td>27</td></tr>
+      <tr><td>8</td><td>3</td><td>5</td><td>1</td><td>8</td><td>31</td></tr>
     </table>
   </div>
   <div class="rsec">
-    <h3>🌐 オンラインの遊び方</h3>
+    <h3>🔄 ターンの流れ</h3>
     <ul>
-      <li>ホストが部屋を作り、4桁コードを友達に共有</li>
-      <li>各自のスマホでコードを入力して参加</li>
-      <li>ホストが「ゲーム開始」を押す</li>
-      <li><strong>各自のスマホで</strong>役職カードをタップしてめくる</li>
-      <li>「準備完了」を全員が押すとゲーム開始</li>
-      <li>各自のスマホで手札からカードを選んでカット</li>
+      <li>ニッパー係が<strong>自分以外</strong>の誰かの裏向きカードを1枚選ぶ</li>
+      <li>カードをめくる → <strong>めくられたプレイヤーが次のニッパー係</strong>になる</li>
+      <li>解除カード：解除チップを1枚フリップ</li>
+      <li>BOOMカード：即ゲーム終了、ボマー団の勝利</li>
+      <li>し～ん：何も起きない</li>
+      <li>プレイ人数分カットされたら1ラウンド終了 → 全カード回収・再配布（1枚減）</li>
     </ul>
   </div>
   <button class="btn bg bs" id="B_RULES_BACK" style="align-self:center;">← ホームへ</button>
 </div>
 
 <!-- ═══ MODALS ═══ -->
-<div class="ov" id="M_RESET">
+<div class="ov" id="M_RST">
   <div class="modal">
     <h3>⚠️ リセット</h3>
-    <p>ゲームをやり直しますか？</p>
+    <p>ゲームをやり直しますか？<br>ホストのみ操作できます。</p>
     <div class="mbtns">
       <button class="btn bg bs" id="B_RST_NO">キャンセル</button>
       <button class="btn br bs" id="B_RST_YES">リセット</button>
@@ -321,562 +337,623 @@ th{background:var(--car);color:var(--mut);}
 <div class="ov" id="M_RULES">
   <div class="modal">
     <h3 style="color:var(--red);">📖 クイックルール</h3>
-    <p style="text-align:left;font-size:13px;color:#bbb;line-height:1.8;">
-      🕵️ エージェント：安全ワイヤーを全部カット → 勝利<br>
-      🧨 テロリスト：爆弾カードをカットさせる → 勝利<br><br>
-      ✅ 安全ワイヤー → 次へ<br>
-      💣 爆弾カード → テロリスト勝利<br>
-      ⏰ 時間切れ → テロリスト勝利
+    <p style="text-align:left;font-size:13px;color:#bbb;line-height:1.9;">
+      🚔 ポリス：解除を全部カット → 勝利<br>
+      💣 ボマー：BOOMをカットさせる → 勝利<br>
+      ⏰ 4ラウンド終了 → ボマー勝利<br><br>
+      ニッパー係が<strong style="color:var(--txt)">他の人のカード</strong>を1枚選んでカット。<br>
+      カットされた人が次のニッパー係。
     </p>
-    <button class="btn bg bs" id="B_RULES_M_CLOSE">閉じる</button>
+    <button class="btn bg bs" id="B_RM_CLOSE">閉じる</button>
   </div>
 </div>
-<div class="ov" id="M_LOADING">
+<div class="ov" id="M_LOAD">
   <div class="modal" style="gap:16px;display:flex;flex-direction:column;align-items:center;">
     <div class="spin"></div>
-    <div id="LOADING_MSG" style="color:var(--mut);font-size:14px;">接続中…</div>
+    <div id="LOAD_MSG" style="color:var(--mut);font-size:14px;">接続中…</div>
   </div>
 </div>
 <div class="ov" id="M_ERR">
   <div class="modal">
     <h3 style="color:var(--red);">⚠️ エラー</h3>
-    <p id="ERR_MSG">エラーが発生しました。</p>
-    <button class="btn bg bs" id="B_ERR_CLOSE">閉じる</button>
+    <p id="ERR_MSG"></p>
+    <button class="btn bg bs" id="B_ERR">閉じる</button>
   </div>
 </div>
 
 <script type="module">
-import { initializeApp }        from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, get, update, remove, onValue, off, serverTimestamp }
-                                 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+                            from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-/* ── Firebase init ── */
 const db = getDatabase(initializeApp({
-  apiKey:            "AIzaSyBglVw9lN4f6ygzEsxopgpVThpzK-hQOgw",
-  authDomain:        "timebomb-bfca1.firebaseapp.com",
-  databaseURL:       "https://timebomb-bfca1-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId:         "timebomb-bfca1",
-  storageBucket:     "timebomb-bfca1.firebasestorage.app",
-  messagingSenderId: "184196559761",
-  appId:             "1:184196559761:web:180412767b030d9cd72030",
+  apiKey:"AIzaSyBglVw9lN4f6ygzEsxopgpVThpzK-hQOgw",
+  authDomain:"timebomb-bfca1.firebaseapp.com",
+  databaseURL:"https://timebomb-bfca1-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:"timebomb-bfca1",
+  storageBucket:"timebomb-bfca1.firebasestorage.app",
+  messagingSenderId:"184196559761",
+  appId:"1:184196559761:web:180412767b030d9cd72030",
 }));
 
-const ROUND_SEC = 180;
-const PT = {4:{t:1,a:3,w:15},5:{t:2,a:3,w:19},6:{t:2,a:4,w:23},7:{t:3,a:4,w:27},8:{t:3,a:5,w:31}};
+/* ── Card counts per player count ──
+   Always 5 cards per player.
+   解除 = player count, BOOM = 1, し～ん = rest  */
+const CARD_CONF = {
+  4:{bomber:1,police:3,kaiho:4, boom:1,shiin:15},
+  5:{bomber:2,police:3,kaiho:5, boom:1,shiin:19},
+  6:{bomber:2,police:4,kaiho:6, boom:1,shiin:23},
+  7:{bomber:3,police:4,kaiho:7, boom:1,shiin:27},
+  8:{bomber:3,police:5,kaiho:8, boom:1,shiin:31},
+};
 
 /* ── App state ── */
-let myId = null, myName = '', roomCode = null, isHost = false;
-let roomRef = null, gs = null;           // gs = gameState snapshot value
-let tmr = null, selCard = null, lastTmrRunning = null, didFlip = false;
+let myId=null, myName='', roomCode=null, isHost=false;
+let roomRef=null, gs=null;
+let roleFlipped=false, peeked=false;
 
 /* ── Helpers ── */
-const el    = id => document.getElementById(id);
-const go    = id => { document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); el(id).classList.add('active'); };
-const mopen = id => el(id).classList.add('open');
-const mclose= id => el(id).classList.remove('open');
-const load  = msg=> { el('LOADING_MSG').textContent=msg||'接続中…'; mopen('M_LOADING'); };
-const unload= ()  => mclose('M_LOADING');
-const err   = msg => { el('ERR_MSG').textContent=msg; mopen('M_ERR'); };
+const $   = id => document.getElementById(id);
+const go  = id => { document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); $(id).classList.add('active'); };
+const mop = id => $(id).classList.add('open');
+const mcl = id => $(id).classList.remove('open');
+const load= msg=> { $('LOAD_MSG').textContent=msg||'接続中…'; mop('M_LOAD'); };
+const unl = ()  => mcl('M_LOAD');
+const err = msg => { $('ERR_MSG').textContent=msg; mop('M_ERR'); };
 
-/* ── Button wiring (runs as soon as module executes — DOM is already ready) ── */
-el('B_TO_LOBBY') .addEventListener('click', ()=>go('lobby'));
-el('B_TO_RULES') .addEventListener('click', ()=>go('rules'));
-el('B_LOBBY_BACK').addEventListener('click', ()=>go('home'));
-el('B_RULES_BACK').addEventListener('click', ()=>go('home'));
-el('B_CREATE')   .addEventListener('click', createRoom);
-el('B_JOIN')     .addEventListener('click', joinRoom);
-el('B_COPY')     .addEventListener('click', copyCode);
-el('B_START')    .addEventListener('click', hostStart);
-el('B_LEAVE_W')  .addEventListener('click', leaveRoom);
-el('RCARD')      .addEventListener('click', flipRole);
-el('B_READY')    .addEventListener('click', markReady);
-el('B_TIMER_TOG').addEventListener('click', hostTimerToggle);
-el('B_TIMER_RST').addEventListener('click', hostTimerReset);
-el('B_CUT')      .addEventListener('click', doCut);
-el('B_NEXT_ROUND').addEventListener('click', hostNextRound);
-el('B_RESTART')  .addEventListener('click', hostRestart);
-el('B_LEAVE_R')  .addEventListener('click', leaveRoom);
-el('B_RULES_M')  .addEventListener('click', ()=>mopen('M_RULES'));
-el('B_RESET_M')  .addEventListener('click', ()=>mopen('M_RESET'));
-el('B_RST_NO')   .addEventListener('click', ()=>mclose('M_RESET'));
-el('B_RST_YES')  .addEventListener('click', doReset);
-el('B_RULES_M_CLOSE').addEventListener('click', ()=>mclose('M_RULES'));
-el('B_ERR_CLOSE').addEventListener('click', ()=>mclose('M_ERR'));
+/* ── Button wiring ── */
+$('B_LOBBY')     .addEventListener('click', ()=>go('lobby'));
+$('B_RULES')     .addEventListener('click', ()=>go('rules'));
+$('B_LBACK')     .addEventListener('click', ()=>go('home'));
+$('B_RULES_BACK').addEventListener('click', ()=>go('home'));
+$('B_CREATE')    .addEventListener('click', createRoom);
+$('B_JOIN')      .addEventListener('click', joinRoom);
+$('B_COPY')      .addEventListener('click', copyCode);
+$('B_START')     .addEventListener('click', hostStart);
+$('B_LEAVE_W')   .addEventListener('click', leaveRoom);
+$('RCARD')       .addEventListener('click', flipRole);
+$('B_ROLE_OK')   .addEventListener('click', markRoleReady);
+$('B_PEEK_OK')   .addEventListener('click', markPeeked);
+$('B_AGAIN')     .addEventListener('click', hostRestart);
+$('B_LEAVE_R')   .addEventListener('click', leaveRoom);
+$('B_RM')        .addEventListener('click', ()=>mop('M_RULES'));
+$('B_RST_M')     .addEventListener('click', ()=>mop('M_RST'));
+$('B_RST_NO')    .addEventListener('click', ()=>mcl('M_RST'));
+$('B_RST_YES')   .addEventListener('click', doReset);
+$('B_RM_CLOSE')  .addEventListener('click', ()=>mcl('M_RULES'));
+$('B_ERR')       .addEventListener('click', ()=>mcl('M_ERR'));
 
 /* ════════════════════════════════════════
    CREATE / JOIN
 ════════════════════════════════════════ */
-async function createRoom() {
-  const name = el('INP_NAME').value.trim();
-  if (!name) { err('名前を入力してください'); return; }
-  myName = name; isHost = true;
-  roomCode = String(1000 + Math.floor(Math.random()*9000));
-  myId = genId();
-  saveMyId(myId);
+async function createRoom(){
+  const name=$('INP_NAME').value.trim();
+  if(!name){err('名前を入力してください');return;}
+  myName=name; isHost=true;
+  roomCode=String(1000+Math.floor(Math.random()*9000));
+  myId='p'+Date.now()+Math.random().toString(36).slice(2,6);
   load('部屋を作成中…');
-  try {
-    roomRef = ref(db, 'rooms/'+roomCode);
-    await set(roomRef, {
-      host: myId, status: 'waiting', playerCount: 4,
-      players: { [myId]: { name: myName, ready: false } },
-      createdAt: serverTimestamp(),
+  try{
+    roomRef=ref(db,'rooms/'+roomCode);
+    await set(roomRef,{
+      host:myId, status:'waiting', playerCount:4,
+      players:{[myId]:{name:myName,roleReady:false,peeked:false}},
+      createdAt:serverTimestamp(),
     });
-    unload(); enterWaiting();
-  } catch(e) { unload(); err('作成失敗: '+e.message); }
+    unl(); enterWaiting();
+  }catch(e){unl();err('作成失敗: '+e.message);}
 }
 
-async function joinRoom() {
-  const name = el('INP_NAME').value.trim();
-  const code = el('INP_CODE').value.trim();
-  if (!name) { err('名前を入力してください'); return; }
-  if (code.length !== 4) { err('4桁のコードを入力してください'); return; }
-  myName = name; roomCode = code; isHost = false;
-  myId = genId();
-  saveMyId(myId);
+async function joinRoom(){
+  const name=$('INP_NAME').value.trim();
+  const code=$('INP_CODE').value.trim();
+  if(!name){err('名前を入力してください');return;}
+  if(code.length!==4){err('4桁のコードを入力してください');return;}
+  myName=name; roomCode=code; isHost=false;
+  myId='p'+Date.now()+Math.random().toString(36).slice(2,6);
   load('接続中…');
-  try {
-    roomRef = ref(db, 'rooms/'+roomCode);
-    const snap = await get(roomRef);
-    if (!snap.exists())            { unload(); err('部屋が見つかりません'); return; }
-    const d = snap.val();
-    if (d.status !== 'waiting')    { unload(); err('ゲームはすでに開始しています'); return; }
-    if (Object.keys(d.players||{}).length >= 8) { unload(); err('満員です'); return; }
-    await update(ref(db,'rooms/'+roomCode+'/players'), { [myId]: { name: myName, ready: false } });
-    unload(); enterWaiting();
-  } catch(e) { unload(); err('接続失敗: '+e.message); }
+  try{
+    roomRef=ref(db,'rooms/'+roomCode);
+    const snap=await get(roomRef);
+    if(!snap.exists()){unl();err('部屋が見つかりません');return;}
+    const d=snap.val();
+    if(d.status!=='waiting'){unl();err('ゲームはすでに開始しています');return;}
+    if(Object.keys(d.players||{}).length>=8){unl();err('満員です');return;}
+    await update(ref(db,'rooms/'+roomCode+'/players'),{[myId]:{name:myName,roleReady:false,peeked:false}});
+    unl(); enterWaiting();
+  }catch(e){unl();err('接続失敗: '+e.message);}
 }
 
 /* ════════════════════════════════════════
-   LEAVE  ← fixed: navigate first, delete in background
+   LEAVE
 ════════════════════════════════════════ */
-function leaveRoom() {
-  /* 1. Stop listening immediately */
-  if (roomRef) off(roomRef);
-  /* 2. Navigate home immediately — no await */
-  stopTmr();
+function leaveRoom(){
+  if(roomRef) off(roomRef);
   go('home');
-  /* 3. Delete self from DB in background */
-  const _code = roomCode, _id = myId;
-  if (_code && _id) remove(ref(db,'rooms/'+_code+'/players/'+_id)).catch(()=>{});
-  /* 4. Reset all state */
-  roomRef=null; roomCode=null; myId=null; isHost=false;
-  gs=null; selCard=null; lastTmrRunning=null; didFlip=false;
-  sessionStorage.removeItem('tb_id');
+  const _c=roomCode,_i=myId;
+  if(_c&&_i) remove(ref(db,'rooms/'+_c+'/players/'+_i)).catch(()=>{});
+  roomRef=null;roomCode=null;myId=null;isHost=false;
+  gs=null;roleFlipped=false;peeked=false;
 }
 
 /* ════════════════════════════════════════
    WAITING ROOM
 ════════════════════════════════════════ */
-function enterWaiting() {
-  el('DISP_CODE').textContent = roomCode;
-  el('HOST_CNT_WRAP').style.display  = isHost ? '' : 'none';
-  el('HOST_START_WRAP').style.display= isHost ? '' : 'none';
-  el('GUEST_WAIT').style.display     = isHost ? 'none' : '';
-  if (isHost) buildCntBtns();
+function enterWaiting(){
+  $('DISP_CODE').textContent=roomCode;
+  $('HOST_CNT').style.display=isHost?'':'none';
+  $('HOST_BTN').style.display=isHost?'':'none';
+  $('GUEST_MSG').style.display=isHost?'none':'';
+  if(isHost) buildCntBtns();
   go('waiting');
-  onValue(roomRef, onSnap);   // single listener for entire session
+  onValue(roomRef,onSnap);
 }
 
-function buildCntBtns() {
-  const row = el('HOST_CNT_ROW'); row.innerHTML = '';
-  [4,5,6,7,8].forEach(n => {
-    const b = document.createElement('button');
-    b.className = 'cntbtn'; b.textContent = n;
-    b.addEventListener('click', () => update(roomRef, {playerCount: n}));
+function buildCntBtns(){
+  const row=$('CNT_ROW'); row.innerHTML='';
+  [4,5,6,7,8].forEach(n=>{
+    const b=document.createElement('button');
+    b.className='cntbtn'; b.textContent=n;
+    b.addEventListener('click',()=>update(roomRef,{playerCount:n}));
     row.appendChild(b);
   });
 }
 
-function copyCode() {
-  const txt = '【タイムボム】部屋コード：'+roomCode+'\n'+location.href;
+function copyCode(){
+  const txt='【タイムボム】部屋コード：'+roomCode+'\n'+location.href;
   navigator.clipboard.writeText(txt)
     .then(()=>alert('コピーしました！\nコード「'+roomCode+'」を友達に送ってね'))
     .catch(()=>alert('コード: '+roomCode));
 }
 
-function renderWaiting() {
-  const list = el('PLAYER_LIST'); list.innerHTML = '';
-  Object.entries(gs.players||{}).forEach(([id,p]) => {
-    const r = document.createElement('div');
-    r.className = 'prow'+(id===myId?' me':'');
-    r.innerHTML = `<div class="pdot"></div><b>${p.name}</b>`
-      +(id===myId ? '<span style="font-size:11px;color:var(--mut);margin-left:auto">あなた</span>':'')
-      +(gs.host===id ? '<span style="font-size:11px;color:var(--ora);margin-left:auto">HOST</span>':'');
+function renderWaiting(){
+  const list=$('PLIST'); list.innerHTML='';
+  Object.entries(gs.players||{}).forEach(([id,p])=>{
+    const r=document.createElement('div');
+    r.className='prow'+(id===myId?' me':'');
+    r.innerHTML=`<div class="pdot"></div><b>${p.name}</b>`
+      +(id===myId?'<span style="font-size:11px;color:var(--mut);margin-left:auto">あなた</span>':'')
+      +(gs.host===id?'<span style="font-size:11px;color:var(--ora);margin-left:auto">HOST</span>':'');
     list.appendChild(r);
   });
-  if (isHost) {
-    el('HOST_CNT_ROW').querySelectorAll('.cntbtn').forEach((b,i)=>
+  if(isHost){
+    $('CNT_ROW').querySelectorAll('.cntbtn').forEach((b,i)=>
       b.classList.toggle('on',[4,5,6,7,8][i]===gs.playerCount));
   }
 }
 
 /* ════════════════════════════════════════
+   HOST START GAME
+════════════════════════════════════════ */
+async function hostStart(){
+  const ids=Object.keys(gs.players||{});
+  if(ids.length<2){err('2人以上必要です');return;}
+  const n=gs.playerCount||4;
+  const conf=CARD_CONF[n]||CARD_CONF[4];
+
+  /* Assign roles */
+  let rolePool=[...Array(conf.bomber).fill('bomber'),...Array(conf.police).fill('police')];
+  while(rolePool.length<ids.length) rolePool.push('police');
+  rolePool=shuffle(rolePool).slice(0,ids.length);
+
+  /* Build and shuffle full deck for the round */
+  const deck=buildDeck(conf);
+
+  /* Deal 5 cards each */
+  const roles={}, cards={};
+  ids.forEach((id,i)=>{
+    roles[id]=rolePool[i];
+    cards[id]=deck.splice(0,5).map(c=>({type:c,revealed:false}));
+  });
+
+  /* Reset ready flags */
+  const reset={};
+  ids.forEach(id=>{reset[id+'/roleReady']=false; reset[id+'/peeked']=false;});
+
+  load('開始中…');
+  try{
+    await update(ref(db,'rooms/'+roomCode+'/players'),reset);
+    await update(roomRef,{
+      status:'role_reveal',
+      roles, cards,
+      round:1,
+      cutsThisRound:0,
+      kaihoRevealed:0,
+      kaihoNeeded:conf.kaiho,
+      nipperId: ids[Math.floor(Math.random()*ids.length)], // random first nipper
+    });
+    unl();
+  }catch(e){unl();err('開始失敗: '+e.message);}
+}
+
+function buildDeck(conf){
+  const d=[];
+  d.push('boom');
+  for(let i=0;i<conf.kaiho;i++) d.push('kaiho');
+  for(let i=0;i<conf.shiin;i++) d.push('shiin');
+  return shuffle(d);
+}
+
+/* ════════════════════════════════════════
    MAIN SNAPSHOT LISTENER
 ════════════════════════════════════════ */
-function onSnap(snap) {
-  if (!snap.exists()) { leaveRoom(); return; }
-  const prev = gs?.status;
-  gs = snap.val();
-  const st = gs.status;
+function onSnap(snap){
+  if(!snap.exists()){leaveRoom();return;}
+  const prev=gs?.status;
+  gs=snap.val();
+  const st=gs.status;
 
-  if (st === 'waiting') {
-    if (el('waiting').classList.contains('active')) renderWaiting();
+  if(st==='waiting'){
+    if($('waiting').classList.contains('active')) renderWaiting();
     return;
   }
 
-  if (st === 'role_reveal') {
-    if (prev !== 'role_reveal') { didFlip=false; showMyRole(); }
-    else updateReadyStatus();
-    // Host checks on every DB update — works regardless of who pressed last
-    if (isHost) {
-      const players = gs.players||{};
-      const ids = Object.keys(players);
-      if (ids.length > 0 && ids.every(id => players[id].ready))
-        update(roomRef, {status:'playing'});
+  if(st==='role_reveal'){
+    if(prev!=='role_reveal'){roleFlipped=false; showMyRole();}
+    else updateRoleStatus();
+    // Host: if all role-ready, move to peek phase
+    if(isHost){
+      const ps=gs.players||{};
+      if(Object.keys(ps).length>0 && Object.values(ps).every(p=>p.roleReady))
+        update(roomRef,{status:'peek'});
     }
     return;
   }
 
-  if (st === 'playing') {
-    if (prev !== 'playing') { selCard=null; renderGame(); go('game'); }
-    else if (el('game').classList.contains('active')) renderGame();
-    const nowRun = !!(gs.timer?.running);
-    if (nowRun !== lastTmrRunning) { lastTmrRunning=nowRun; syncTmr(); }
+  if(st==='peek'){
+    if(prev!=='peek'){peeked=false; showPeek();}
+    else updatePeekStatus();
+    // Host: if all peeked, move to playing
+    if(isHost){
+      const ps=gs.players||{};
+      if(Object.keys(ps).length>0 && Object.values(ps).every(p=>p.peeked))
+        update(roomRef,{status:'playing'});
+    }
     return;
   }
 
-  if (st === 'result') { stopTmr(); renderResult(); go('result'); }
+  if(st==='playing'){
+    if(prev!=='playing'){ renderGame(); go('game'); }
+    else if($('game').classList.contains('active')) renderGame();
+    return;
+  }
+
+  if(st==='result'){renderResult();go('result');}
 }
 
 /* ════════════════════════════════════════
-   HOST START
+   ROLE REVEAL PHASE
 ════════════════════════════════════════ */
-async function hostStart() {
-  const ids = Object.keys(gs.players||{});
-  if (ids.length < 2) { err('2人以上必要です'); return; }
-  const conf = PT[gs.playerCount]||PT[4];
-
-  // roles
-  let pool = [...Array(conf.t).fill('terrorist'), ...Array(conf.a).fill('agent')];
-  while (pool.length < ids.length) pool.push('agent');
-  pool = shuffle(pool).slice(0, ids.length);
-
-  // deck
-  let deck = [{type:'bomb'}, ...Array(conf.w).fill(0).map(()=>({type:'safe'}))];
-  deck = shuffle(deck);
-  const perPlayer = Math.floor(deck.length / ids.length);
-
-  const roles={}, cards={};
-  ids.forEach((id,i)=>{
-    roles[id] = pool[i];
-    cards[id] = deck.splice(0,perPlayer).map(c=>({...c,revealed:false}));
-  });
-
-  // reset ready flags
-  const readyReset = {};
-  ids.forEach(id => { readyReset[id+'/ready'] = false; });
-
-  load('開始中…');
-  try {
-    await update(ref(db,'rooms/'+roomCode+'/players'), readyReset);
-    await update(roomRef, {
-      status:'role_reveal', roles, cards,
-      round:1, totalRounds:perPlayer,
-      wiresCut:0, wiresNeeded:conf.w,
-      cutsThisRound:{},
-      timer:{running:false, secondsLeft:ROUND_SEC},
-    });
-    unload();
-  } catch(e) { unload(); err('開始失敗: '+e.message); }
-}
-
-/* ════════════════════════════════════════
-   ROLE REVEAL — each player on own device
-════════════════════════════════════════ */
-function showMyRole() {
-  const role = (gs.roles||{})[myId];
-  if (!role) return;
-  el('RCARD').classList.remove('flip');
-  el('READY_WRAP').style.display = 'none';
-  el('RBACK').className = 'rface rback '+role;
-  el('RICON').textContent = role==='terrorist' ? '🧨' : '🕵️';
-  el('RNAME').textContent = role==='terrorist' ? 'テロリスト' : 'エージェント';
-  el('RNAME').className   = 'rname '+role;
-  el('ROLE_PNAME').textContent = myName;
-  el('RDESC').textContent = role==='terrorist'
-    ? '爆弾カードをカットさせれば勝利！役職を隠しながら工作しろ。'
-    : '安全ワイヤーを全てカットすれば勝利！テロリストを見つけ出せ。';
+function showMyRole(){
+  const role=(gs.roles||{})[myId];
+  if(!role) return;
+  $('RCARD').classList.remove('flip');
+  $('ROLE_READY').style.display='none';
+  $('RBACK').className='rface rback '+role;
+  $('RICON').textContent=role==='bomber'?'💣':'🚔';
+  $('RNAME_TXT').textContent=role==='bomber'?'ボマー団':'タイムポリス';
+  $('RNAME_TXT').className='rname '+role;
+  $('ROLE_NAME').textContent=myName;
+  $('RDESC').textContent=role==='bomber'
+    ?'BOOMカードをカットさせれば勝利！正体を隠せ。'
+    :'解除カードを全てカットすれば勝利！ボマーを見つけ出せ。';
   go('role');
 }
 
-function flipRole() {
-  if (didFlip) return;
-  didFlip = true;
-  el('RCARD').classList.add('flip');
-  el('READY_WRAP').style.display = 'flex';
-  updateReadyStatus();
+function flipRole(){
+  if(roleFlipped) return;
+  roleFlipped=true;
+  $('RCARD').classList.add('flip');
+  $('ROLE_READY').style.display='flex';
+  updateRoleStatus();
 }
 
-function updateReadyStatus() {
-  if (!el('role').classList.contains('active')) return;
-  const players = gs.players||{};
-  const total = Object.keys(players).length;
-  const ready = Object.values(players).filter(p=>p.ready).length;
-  el('READY_STATUS').textContent = `準備完了: ${ready} / ${total}`;
+function updateRoleStatus(){
+  if(!$('role').classList.contains('active')) return;
+  const ps=gs.players||{};
+  const ready=Object.values(ps).filter(p=>p.roleReady).length;
+  $('ROLE_STATUS').textContent=`確認済み: ${ready} / ${Object.keys(ps).length}`;
 }
 
-async function markReady() {
-  el('B_READY').disabled = true;
-  el('B_READY').textContent = '待機中…';
-  try {
-    await update(ref(db,'rooms/'+roomCode+'/players/'+myId), {ready:true});
-    /* Every player checks if all are ready and the host fires the transition.
-       We re-check on every snapshot via updateReadyStatus + onSnap will
-       detect when host sets status→playing.
-       Host additionally checks immediately after own ready: */
-    if (isHost) await checkAllReady();
-  } catch(e) { err('エラー: '+e.message); }
+async function markRoleReady(){
+  $('B_ROLE_OK').disabled=true;
+  $('B_ROLE_OK').textContent='待機中…';
+  try{
+    await update(ref(db,'rooms/'+roomCode+'/players/'+myId),{roleReady:true});
+    if(isHost) await checkAllRoleReady();
+  }catch(e){err('エラー: '+e.message);}
 }
 
-async function checkAllReady() {
-  const snap = await get(ref(db,'rooms/'+roomCode+'/players'));
-  const players = snap.val()||{};
-  if (Object.values(players).every(p=>p.ready))
-    await update(roomRef, {status:'playing'});
+async function checkAllRoleReady(){
+  const snap=await get(ref(db,'rooms/'+roomCode+'/players'));
+  const ps=snap.val()||{};
+  if(Object.values(ps).every(p=>p.roleReady))
+    await update(roomRef,{status:'peek'});
+}
+
+/* ════════════════════════════════════════
+   PEEK PHASE — see your own cards
+════════════════════════════════════════ */
+function showPeek(){
+  const myCards=(gs.cards||{})[myId]||[];
+  // Count types
+  const counts={kaiho:0,boom:0,shiin:0};
+  myCards.forEach(c=>counts[c.type]=(counts[c.type]||0)+1);
+
+  const box=$('PEEK_CARDS'); box.innerHTML='';
+  // Show each card as its type (order doesn't matter — they'll be shuffled)
+  myCards.forEach(c=>{
+    const el=document.createElement('div');
+    const t=c.type;
+    el.className='peek-card '+(t==='kaiho'?'kaiho':t==='boom'?'boom':'shiin');
+    el.innerHTML=`<div class="pci">${t==='kaiho'?'✅':t==='boom'?'💣':'💤'}</div>`
+      +`<div>${t==='kaiho'?'解除':t==='boom'?'BOOM':'し～ん'}</div>`;
+    box.appendChild(el);
+  });
+
+  $('B_PEEK_OK').disabled=false;
+  $('B_PEEK_OK').textContent='🔀 確認した（シャッフル）';
+  updatePeekStatus();
+  go('peek');
+}
+
+function updatePeekStatus(){
+  if(!$('peek').classList.contains('active')) return;
+  const ps=gs.players||{};
+  const done=Object.values(ps).filter(p=>p.peeked).length;
+  $('PEEK_STATUS').textContent=`準備完了: ${done} / ${Object.keys(ps).length}`;
+}
+
+async function markPeeked(){
+  if(peeked) return;
+  peeked=true;
+  $('B_PEEK_OK').disabled=true;
+  $('B_PEEK_OK').textContent='待機中…';
+
+  // Shuffle MY cards server-side so no one knows positions
+  const myCards=(gs.cards||{})[myId]||[];
+  const shuffled=shuffle([...myCards]);
+
+  try{
+    await update(ref(db),{
+      [`rooms/${roomCode}/cards/${myId}`]:shuffled,
+      [`rooms/${roomCode}/players/${myId}/peeked`]:true,
+    });
+    if(isHost) await checkAllPeeked();
+  }catch(e){err('エラー: '+e.message);}
+}
+
+async function checkAllPeeked(){
+  const snap=await get(ref(db,'rooms/'+roomCode+'/players'));
+  const ps=snap.val()||{};
+  if(Object.values(ps).every(p=>p.peeked))
+    await update(roomRef,{status:'playing'});
 }
 
 /* ════════════════════════════════════════
    GAME RENDERING
 ════════════════════════════════════════ */
-function renderGame() {
-  if (!gs) return;
-  el('G_ROUND').textContent = gs.round||1;
-  el('G_TOTAL').textContent = gs.totalRounds||'?';
-  el('G_WCUT').textContent  = gs.wiresCut||0;
-  el('G_WTOT').textContent  = gs.wiresNeeded||'?';
+function renderGame(){
+  if(!gs) return;
+  const n=Object.keys(gs.players||{}).length;
+  $('G_ROUND').textContent=gs.round||1;
+  $('G_CUTS').textContent=gs.cutsThisRound||0;
+  $('G_CUTS_NEED').textContent=n;
 
-  // wire tally
-  const tally = el('WTALLY'); tally.innerHTML='';
-  for (let i=0;i<(gs.wiresNeeded||0);i++){
-    const d=document.createElement('div');
-    d.className='wdot'+(i<(gs.wiresCut||0)?' cut':'');
-    tally.appendChild(d);
+  // Chips
+  const chips=$('CHIPS'); chips.innerHTML='';
+  for(let i=0;i<(gs.kaihoNeeded||0);i++){
+    const c=document.createElement('div');
+    c.className='chip'+(i<(gs.kaihoRevealed||0)?' done':'');
+    c.textContent=i<(gs.kaihoRevealed||0)?'✅':'';
+    chips.appendChild(c);
   }
 
-  // timer buttons: only host sees them
-  el('TIMER_BTNS').style.display = isHost?'flex':'none';
-  el('B_TIMER_TOG').textContent  = gs.timer?.running?'⏸ 停止':'▶ 開始';
+  // Turn banner
+  const isNipper=gs.nipperId===myId;
+  const nipperName=(gs.players||{})[gs.nipperId]?.name||'?';
+  const banner=$('TURN_BANNER');
+  if(isNipper){
+    banner.innerHTML=`<div class="banner-nipper">
+      <div style="font-size:12px;color:var(--ora);letter-spacing:2px;margin-bottom:4px;">あなたのターン</div>
+      <div style="font-weight:700;font-size:14px;color:var(--txt);">✂️ 他のプレイヤーのカードを1枚選んでカット！</div>
+    </div>`;
+  } else {
+    banner.innerHTML=`<div class="banner-wait">ニッパー係：<strong style="color:var(--txt)">${nipperName}</strong> がカットを選んでいます…</div>`;
+  }
 
-  // turn banner
-  const cuts = gs.cutsThisRound||{};
-  const myTurn = !cuts[myId];
-  const waiting = Object.keys(gs.players||{}).filter(id=>!cuts[id]);
-  el('TURN_BANNER').innerHTML = myTurn
-    ? '<div class="banner-go">✂️ あなたのターン！カードを選んでカットしてください</div>'
-    : `<div class="banner-wait">⏳ 他のプレイヤーのカット待ち（残り ${waiting.length}人）</div>`;
-
-  renderHand();
-  renderGrid();
-
-  const allCut = Object.keys(cuts).length >= Object.keys(gs.players||{}).length;
-  el('NEXT_ROUND_WRAP').style.display = (isHost&&allCut)?'':'none';
+  // Board
+  renderBoard(isNipper);
 }
 
-function renderHand() {
-  const myCards = (gs.cards||{})[myId]||[];
-  const alreadyCut = !!(gs.cutsThisRound||{})[myId];
-  const box = el('MY_HAND'); box.innerHTML='';
-  myCards.forEach((card,idx)=>{
-    const c=document.createElement('div');
-    if (card.revealed) {
-      c.className='hcard '+(card.type==='bomb'?'bomb':'safe');
-      c.innerHTML=`<span style="font-size:22px">${card.type==='bomb'?'💣':'✅'}</span><span>${card.type==='bomb'?'爆弾':'安全'}</span>`;
-    } else if (alreadyCut) {
-      c.className='hcard done';
-      c.innerHTML=`<span style="font-size:22px">🃏</span><span>済</span>`;
-    } else {
-      c.className='hcard'+(selCard===idx?' sel':'');
-      c.innerHTML=`<span style="font-size:22px">🃏</span><span>${idx+1}枚目</span>`;
-      c.addEventListener('click',()=>{selCard=idx; renderHand();});
-    }
-    box.appendChild(c);
-  });
-  const btn=el('B_CUT'), hint=el('CUT_HINT');
-  if (alreadyCut)          {btn.disabled=true; hint.textContent='今ラウンドはカット済み';}
-  else if (selCard===null) {btn.disabled=true; hint.textContent='カードを選んでください';}
-  else                     {btn.disabled=false;hint.textContent=`${selCard+1}枚目を選択中`;}
-}
+function renderBoard(isNipper){
+  const board=$('BOARD'); board.innerHTML='';
+  const players=gs.players||{};
+  const cards=gs.cards||{};
 
-function renderGrid() {
-  const grid=el('PGRID'); grid.innerHTML='';
-  const cuts=gs.cutsThisRound||{};
-  Object.entries(gs.players||{}).forEach(([pid,p])=>{
-    const cards=(gs.cards||{})[pid]||[];
-    const tile=document.createElement('div');
-    tile.className='ptile'+(pid===myId?' me':'');
-    const nr=document.createElement('div');
-    nr.style='display:flex;align-items:center;gap:5px;';
-    nr.innerHTML=`<span class="tname">${p.name}</span>`
-      +(pid===myId?'<span style="font-size:10px;color:var(--ora)">YOU</span>':'')
-      +(cuts[pid]?'<span style="font-size:10px;color:var(--grn);margin-left:auto">✓</span>':'');
-    const cr=document.createElement('div'); cr.className='tcards';
-    cards.forEach(c=>{
-      const m=document.createElement('div');
-      if (!c.revealed){m.className='mcard';m.textContent='?';m.style.color='var(--mut)';}
-      else{m.className='mcard '+c.type;m.textContent=c.type==='bomb'?'💣':'✅';}
-      cr.appendChild(m);
+  Object.entries(players).forEach(([pid,p])=>{
+    const isMe=pid===myId;
+    const isNipperPlayer=pid===gs.nipperId;
+    const pCards=cards[pid]||[];
+
+    const area=document.createElement('div');
+    area.className='p-area'+(isMe?' is-me':'')+(isNipperPlayer?' nipper-holder':'');
+
+    const hdr=document.createElement('div');
+    hdr.className='p-area-header';
+    hdr.innerHTML=`<span class="p-area-name">${p.name}</span>`
+      +(isMe?'<span class="badge badge-you">YOU</span>':'')
+      +(isNipperPlayer?'<span class="badge badge-nipper">✂️ ニッパー係</span>':'');
+
+    const cardRow=document.createElement('div');
+    cardRow.className='p-cards';
+
+    pCards.forEach((card,idx)=>{
+      const cel=document.createElement('div');
+      if(card.revealed){
+        cel.className='gcard revealed-'+card.type;
+        cel.innerHTML=`<span class="gci">${card.type==='kaiho'?'✅':card.type==='boom'?'💣':'💤'}</span>`
+          +`<span>${card.type==='kaiho'?'解除':card.type==='boom'?'BOOM':'し～ん'}</span>`;
+      } else if(isMe){
+        // My own face-down cards — not clickable (I don't know positions)
+        cel.className='gcard facedown-mine';
+        cel.innerHTML=`<span class="gci">🃏</span><span style="font-size:10px;">裏</span>`;
+      } else if(isNipper && !isMe){
+        // Other player's card — I can cut if I'm nipper
+        cel.className='gcard facedown-other';
+        cel.innerHTML=`<span class="gci">🃏</span><span>カット?</span>`;
+        cel.addEventListener('click',()=>doCut(pid,idx));
+      } else {
+        // Other player's card, not my turn
+        cel.className='gcard facedown-other';
+        cel.style.cursor='default';
+        cel.style.opacity='.6';
+        cel.innerHTML=`<span class="gci">🃏</span><span style="font-size:10px;">裏</span>`;
+      }
+      cardRow.appendChild(cel);
     });
-    tile.appendChild(nr); tile.appendChild(cr); grid.appendChild(tile);
+
+    area.appendChild(hdr);
+    area.appendChild(cardRow);
+    board.appendChild(area);
   });
 }
 
 /* ════════════════════════════════════════
-   CUT
+   CUT ACTION
 ════════════════════════════════════════ */
-async function doCut() {
-  if (selCard===null) return;
-  const myCards=(gs.cards||{})[myId];
-  if (!myCards) return;
-  const card=myCards[selCard];
-  if (!card||card.revealed) return;
+async function doCut(targetId, cardIdx){
+  if(gs.nipperId!==myId) return; // safety check
+  const targetCards=(gs.cards||{})[targetId];
+  if(!targetCards) return;
+  const card=targetCards[cardIdx];
+  if(!card||card.revealed) return;
 
-  const updated=myCards.map((c,i)=>i===selCard?{...c,revealed:true}:c);
-  const prev=selCard; selCard=null;
+  const updated=targetCards.map((c,i)=>i===cardIdx?{...c,revealed:true}:c);
+  const newCuts=(gs.cutsThisRound||0)+1;
+  const n=Object.keys(gs.players||{}).length;
 
   const u={};
-  u[`rooms/${roomCode}/cards/${myId}`]=updated;
-  u[`rooms/${roomCode}/cutsThisRound/${myId}`]=true;
+  u[`rooms/${roomCode}/cards/${targetId}`]=updated;
+  u[`rooms/${roomCode}/nipperId`]=targetId; // cut player becomes next nipper
+  u[`rooms/${roomCode}/cutsThisRound`]=newCuts;
 
-  if (card.type==='bomb') {
+  if(card.type==='boom'){
+    // Immediate loss
     u[`rooms/${roomCode}/status`]='result';
-    u[`rooms/${roomCode}/winner`]='terrorist';
-    u[`rooms/${roomCode}/winReason`]='💣 爆弾がカットされた！テロリストの勝利！';
-  } else {
-    const nw=(gs.wiresCut||0)+1;
-    u[`rooms/${roomCode}/wiresCut`]=nw;
-    if (nw>=(gs.wiresNeeded||0)){
+    u[`rooms/${roomCode}/winner`]='bomber';
+    u[`rooms/${roomCode}/winReason`]='💣 BOOMがカットされた！ボマー団の勝利！';
+  } else if(card.type==='kaiho'){
+    const newKaiho=(gs.kaihoRevealed||0)+1;
+    u[`rooms/${roomCode}/kaihoRevealed`]=newKaiho;
+    if(newKaiho>=(gs.kaihoNeeded||0)){
       u[`rooms/${roomCode}/status`]='result';
-      u[`rooms/${roomCode}/winner`]='agent';
-      u[`rooms/${roomCode}/winReason`]='✅ 全ての安全ワイヤーをカット！エージェントの勝利！';
+      u[`rooms/${roomCode}/winner`]='police';
+      u[`rooms/${roomCode}/winReason`]='✅ 全ての解除カードをカット！タイムポリスの勝利！';
     }
   }
-  try { await update(ref(db),u); }
-  catch(e){ selCard=prev; err('カット失敗: '+e.message); }
-}
 
-/* ════════════════════════════════════════
-   TIMER
-════════════════════════════════════════ */
-async function hostTimerToggle() {
-  if (!isHost) return;
-  const t=gs.timer||{};
-  if (t.running) {
-    const elapsed=Math.floor((Date.now()-t.startedAt)/1000);
-    const rem=Math.max(0,(t.secondsLeft||ROUND_SEC)-elapsed);
-    await update(ref(db,'rooms/'+roomCode+'/timer'),{running:false,secondsLeft:rem,startedAt:null});
-  } else {
-    await update(ref(db,'rooms/'+roomCode+'/timer'),{running:true,secondsLeft:t.secondsLeft||ROUND_SEC,startedAt:Date.now()});
-  }
-}
-
-async function hostTimerReset() {
-  if (!isHost) return;
-  stopTmr();
-  await update(ref(db,'rooms/'+roomCode+'/timer'),{running:false,secondsLeft:ROUND_SEC,startedAt:null});
-}
-
-function syncTmr() {
-  stopTmr();
-  const t=gs.timer||{running:false,secondsLeft:ROUND_SEC};
-  if (t.running&&t.startedAt) {
-    const elapsed=Math.floor((Date.now()-t.startedAt)/1000);
-    tickDown(Math.max(0,(t.secondsLeft||ROUND_SEC)-elapsed));
-  } else {
-    setTmrUI(t.secondsLeft??ROUND_SEC);
-  }
-}
-
-function tickDown(s) {
-  setTmrUI(s);
-  tmr=setInterval(async()=>{
-    s--;
-    if (s<=0){
-      stopTmr(); setTmrUI(0);
-      if (isHost&&gs?.status==='playing')
-        await update(roomRef,{status:'result',winner:'terrorist',winReason:'⏰ 時間切れ！テロリストの勝利！'});
+  // Check round end (after this cut, cutsThisRound === n)
+  if(!u[`rooms/${roomCode}/status`] && newCuts>=n){
+    // Round end — check if 4 rounds done
+    const nextRound=(gs.round||1)+1;
+    if(nextRound>4){
+      u[`rooms/${roomCode}/status`]='result';
+      u[`rooms/${roomCode}/winner`]='bomber';
+      u[`rooms/${roomCode}/winReason`]='⏰ 4ラウンド終了！ボマー団の勝利！';
+    } else {
+      // Deal new cards for next round
+      await doNextRound(u, nextRound);
       return;
     }
-    setTmrUI(s);
-  },1000);
-}
-
-function stopTmr(){clearInterval(tmr);tmr=null;}
-
-function setTmrUI(s){
-  if(s==null)s=ROUND_SEC;
-  const v=el('TVAL'),r=el('TRING');
-  if(v)v.textContent=pad(Math.floor(s/60))+':'+pad(s%60);
-  if(r){const ratio=s/ROUND_SEC;r.style.strokeDashoffset=301.6*(1-ratio);r.style.stroke=ratio>.5?'var(--grn)':ratio>.25?'var(--ora)':'var(--red)';}
-  if(v)v.style.color=s<=10?'var(--red)':'var(--txt)';
-}
-const pad=n=>String(n).padStart(2,'0');
-
-/* ════════════════════════════════════════
-   NEXT ROUND
-════════════════════════════════════════ */
-async function hostNextRound(){
-  if(!isHost)return;
-  stopTmr();
-  const next=(gs.round||1)+1;
-  if(next>(gs.totalRounds||4)){
-    await update(roomRef,{status:'result',winner:'terrorist',winReason:'ラウンド終了！爆弾は解除できなかった…テロリストの勝利！'});
-    return;
   }
-  await update(roomRef,{round:next,cutsThisRound:{},timer:{running:false,secondsLeft:ROUND_SEC,startedAt:null}});
+
+  try{ await update(ref(db),u); }
+  catch(e){ err('カット失敗: '+e.message); }
+}
+
+async function doNextRound(baseUpdate, nextRound){
+  const ids=Object.keys(gs.players||{});
+  const n=ids.length;
+  const conf=CARD_CONF[gs.playerCount||n]||CARD_CONF[4];
+  const cardsPerPlayer=5-(nextRound-1); // 5→4→3→2
+
+  // New deck (only cards needed)
+  const totalCards=cardsPerPlayer*n;
+  // Reuse same ratios but scaled
+  // Keep 1 boom, keep as many kaiho as possible (up to kaihoNeeded-kaihoRevealed), rest shiin
+  const remainingKaiho=(gs.kaihoNeeded||conf.kaiho)-(gs.kaihoRevealed||0);
+  const kaihoInDeck=Math.min(remainingKaiho, totalCards-1);
+  const shiinInDeck=totalCards-1-kaihoInDeck;
+
+  const newDeck=['boom',...Array(kaihoInDeck).fill('kaiho'),...Array(shiinInDeck).fill('shiin')];
+  const shuffledDeck=shuffle(newDeck);
+
+  const newCards={}, newPeeked={};
+  ids.forEach(id=>{
+    newCards[id]=shuffledDeck.splice(0,cardsPerPlayer).map(t=>({type:t,revealed:false}));
+    newPeeked[id+'/peeked']=false;
+    newPeeked[id+'/roleReady']=true; // keep roles, no need to re-reveal
+  });
+
+  const u={...baseUpdate};
+  u[`rooms/${roomCode}/round`]=nextRound;
+  u[`rooms/${roomCode}/cutsThisRound`]=0;
+  u[`rooms/${roomCode}/status`]='peek'; // show new cards to each player
+  ids.forEach(id=>{
+    u[`rooms/${roomCode}/cards/${id}`]=newCards[id];
+  });
+
+  try{
+    await update(ref(db),u);
+    await update(ref(db,'rooms/'+roomCode+'/players'),newPeeked);
+  }catch(e){ err('ラウンド移行失敗: '+e.message); }
 }
 
 /* ════════════════════════════════════════
    RESULT
 ════════════════════════════════════════ */
 function renderResult(){
-  const w=gs.winner||'terrorist';
-  el('result').className='screen '+(w==='agent'?'aw':'tw');
-  el('R_ICON').textContent=w==='agent'?'🎉':'💥';
-  el('R_TITLE').className='rtitle '+(w==='agent'?'ac':'tc');
-  el('R_TITLE').textContent=w==='agent'?'AGENTS WIN！':'TERRORISTS WIN！';
-  el('R_REASON').textContent=gs.winReason||'';
-  const re=el('R_ROLES'); re.innerHTML='';
+  const w=gs.winner||'bomber';
+  $('result').className='screen '+(w==='police'?'pw':'bw');
+  $('R_ICON').textContent=w==='police'?'🎉':'💥';
+  $('R_TITLE').className='rtitle '+(w==='police'?'pc':'bc');
+  $('R_TITLE').textContent=w==='police'?'POLICE WIN！':'BOMBER WIN！';
+  $('R_REASON').textContent=gs.winReason||'';
+
+  const re=$('R_ROLES'); re.innerHTML='';
   Object.entries(gs.players||{}).forEach(([pid,p])=>{
     const role=(gs.roles||{})[pid];
-    const col=role==='agent'?'var(--grn)':'var(--red)';
-    const lbl=role==='agent'?'🕵️ エージェント':'🧨 テロリスト';
+    const col=role==='police'?'var(--grn)':'var(--red)';
+    const lbl=role==='police'?'🚔 タイムポリス':'💣 ボマー団';
     const chip=document.createElement('div');
     chip.style='display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--car);border:1px solid var(--bdr);border-radius:8px;';
-    chip.innerHTML=`<b>${p.name}</b>${pid===myId?'<span style="font-size:10px;color:var(--ora)">YOU</span>':''}<span style="color:${col};font-size:13px;margin-left:auto">${lbl}</span>`;
+    chip.innerHTML=`<b>${p.name}</b>${pid===myId?'<span style="font-size:10px;color:var(--ora);margin-left:2px">YOU</span>':''}<span style="color:${col};font-size:13px;margin-left:auto">${lbl}</span>`;
     re.appendChild(chip);
   });
 }
 
 async function hostRestart(){
   if(!isHost){err('ホストだけが再スタートできます');return;}
-  stopTmr();
   const ids=Object.keys(gs.players||{});
-  const rr={}; ids.forEach(id=>{rr[id+'/ready']=false;});
+  const rr={}; ids.forEach(id=>{rr[id+'/roleReady']=false;rr[id+'/peeked']=false;});
   await update(ref(db,'rooms/'+roomCode+'/players'),rr);
-  await update(roomRef,{status:'waiting',roles:null,cards:null,round:null,totalRounds:null,wiresCut:null,wiresNeeded:null,cutsThisRound:null,winner:null,winReason:null,timer:null});
+  await update(roomRef,{
+    status:'waiting',roles:null,cards:null,round:null,
+    cutsThisRound:null,kaihoRevealed:null,kaihoNeeded:null,
+    nipperId:null,winner:null,winReason:null,
+  });
   go('waiting');
 }
 
 function doReset(){
-  mclose('M_RESET');
+  mcl('M_RST');
   if(isHost) hostRestart(); else leaveRoom();
 }
 
 /* ════════════════════════════════════════
    UTILS
 ════════════════════════════════════════ */
-function genId(){ return 'p'+Date.now()+Math.random().toString(36).slice(2,7); }
-function saveMyId(id){ try{sessionStorage.setItem('tb_id',id);}catch(_){} }
 function shuffle(a){
   const r=[...a];
   for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
