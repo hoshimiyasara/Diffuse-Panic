@@ -527,6 +527,13 @@ function onSnap(snap) {
   if (st === 'role_reveal') {
     if (prev !== 'role_reveal') { didFlip=false; showMyRole(); }
     else updateReadyStatus();
+    // Host checks on every DB update — works regardless of who pressed last
+    if (isHost) {
+      const players = gs.players||{};
+      const ids = Object.keys(players);
+      if (ids.length > 0 && ids.every(id => players[id].ready))
+        update(roomRef, {status:'playing'});
+    }
     return;
   }
 
