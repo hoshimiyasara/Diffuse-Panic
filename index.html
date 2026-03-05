@@ -227,7 +227,7 @@ th{background:var(--car);color:var(--mut);}
       </div>
     </div>
   </div>
-  <div id="ROLE_READY" style="display:none;width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:center;">
+  <div id="ROLE_READY" style="display:none;width:100%;max-width:320px;margin:0 auto;flex-direction:column;gap:14px;align-items:center;">
     <div style="font-size:13px;color:var(--mut);text-align:center;line-height:1.6;" id="RDESC"></div>
     <div style="font-size:13px;color:var(--mut);text-align:center;" id="ROLE_STATUS"></div>
     <button class="btn br" id="B_ROLE_OK">✅ 確認した！</button>
@@ -603,8 +603,9 @@ function onSnap(snap){
   if(st==='peek'){
     if(prev!=='peek'){peeked=false; showPeek();}
     else updatePeekStatus();
-    // Host: if all peeked, move to playing
-    if(isHost){
+    // Host: only move to playing if everyone has peeked
+    // (skip on first transition — peeked flags were just reset to false)
+    if(isHost && prev==='peek'){
       const ps=gs.players||{};
       if(Object.keys(ps).length>0 && Object.values(ps).every(p=>p.peeked))
         update(roomRef,{status:'playing'});
@@ -667,8 +668,12 @@ async function markRoleReady(){
 async function checkAllRoleReady(){
   const snap=await get(ref(db,'rooms/'+roomCode+'/players'));
   const ps=snap.val()||{};
-  if(Object.values(ps).every(p=>p.roleReady))
-    await update(roomRef,{status:'peek'});
+  if(Object.values(ps).every(p=>p.roleReady)){
+    // Reset peeked in same update to avoid race condition
+    const u={status:'peek'};
+    Object.keys(ps).forEach(id=>{ u[`players/${id}/peeked`]=false; });
+    await update(roomRef,u);
+  }
 }
 
 /* ════════════════════════════════════════
@@ -878,23 +883,19 @@ async function doNextRound(baseUpdate, nextRound){
   const conf=CARD_CONF[gs.playerCount||n]||CARD_CONF[4];
   const cardsPerPlayer=5-(nextRound-1); // round1→5, round2→4, round3→3, round4→2
 
-  /* Collect ALL unrevealed cards from everyone, plus add back any needed */
+  // Build new deck from remaining cards
   let pool=[];
-  // Always include BOOM (1 card)
   pool.push('boom');
-  // Remaining kaiho not yet revealed
   const remainingKaiho=(gs.kaihoNeeded||conf.kaiho)-(gs.kaihoRevealed||0);
   for(let i=0;i<remainingKaiho;i++) pool.push('kaiho');
-  // Fill rest with shiin
   const totalNeeded=cardsPerPlayer*n;
   while(pool.length<totalNeeded) pool.push('shiin');
-  // Trim if over (shouldn't happen but safety)
   pool=pool.slice(0,totalNeeded);
   pool=shuffle(pool);
 
-  const newPeeked={};
-  ids.forEach(id=>{ newPeeked[id+'/peeked']=false; });
-
+  // Build ONE single update object — critical to avoid race condition
+  // where status='peek' lands before peeked=false, causing host to
+  // immediately skip peek phase
   const u={...baseUpdate};
   u[`rooms/${roomCode}/round`]=nextRound;
   u[`rooms/${roomCode}/cutsThisRound`]=0;
@@ -902,11 +903,12 @@ async function doNextRound(baseUpdate, nextRound){
   ids.forEach(id=>{
     const hand=pool.splice(0,cardsPerPlayer).map(t=>({type:t,revealed:false}));
     u[`rooms/${roomCode}/cards/${id}`]=hand;
+    // Reset peeked flag IN THE SAME UPDATE as status change
+    u[`rooms/${roomCode}/players/${id}/peeked`]=false;
   });
 
   try{
     await update(ref(db),u);
-    await update(ref(db,'rooms/'+roomCode+'/players'),newPeeked);
   }catch(e){ err('ラウンド移行失敗: '+e.message); }
 }
 
