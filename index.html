@@ -227,8 +227,8 @@ th{background:var(--car);color:var(--mut);}
       </div>
     </div>
   </div>
-  <div style="font-size:13px;color:var(--mut);text-align:center;max-width:280px;margin:0 auto;line-height:1.6;" id="RDESC"></div>
-  <div id="ROLE_READY" style="display:none;width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px;align-items:center;">
+  <div id="ROLE_READY" style="display:none;width:100%;max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:center;">
+    <div style="font-size:13px;color:var(--mut);text-align:center;line-height:1.6;" id="RDESC"></div>
     <div style="font-size:13px;color:var(--mut);text-align:center;" id="ROLE_STATUS"></div>
     <button class="btn br" id="B_ROLE_OK">✅ 確認した！</button>
   </div>
@@ -876,32 +876,32 @@ async function doNextRound(baseUpdate, nextRound){
   const ids=Object.keys(gs.players||{});
   const n=ids.length;
   const conf=CARD_CONF[gs.playerCount||n]||CARD_CONF[4];
-  const cardsPerPlayer=5-(nextRound-1); // 5→4→3→2
+  const cardsPerPlayer=5-(nextRound-1); // round1→5, round2→4, round3→3, round4→2
 
-  // New deck (only cards needed)
-  const totalCards=cardsPerPlayer*n;
-  // Reuse same ratios but scaled
-  // Keep 1 boom, keep as many kaiho as possible (up to kaihoNeeded-kaihoRevealed), rest shiin
+  /* Collect ALL unrevealed cards from everyone, plus add back any needed */
+  let pool=[];
+  // Always include BOOM (1 card)
+  pool.push('boom');
+  // Remaining kaiho not yet revealed
   const remainingKaiho=(gs.kaihoNeeded||conf.kaiho)-(gs.kaihoRevealed||0);
-  const kaihoInDeck=Math.min(remainingKaiho, totalCards-1);
-  const shiinInDeck=totalCards-1-kaihoInDeck;
+  for(let i=0;i<remainingKaiho;i++) pool.push('kaiho');
+  // Fill rest with shiin
+  const totalNeeded=cardsPerPlayer*n;
+  while(pool.length<totalNeeded) pool.push('shiin');
+  // Trim if over (shouldn't happen but safety)
+  pool=pool.slice(0,totalNeeded);
+  pool=shuffle(pool);
 
-  const newDeck=['boom',...Array(kaihoInDeck).fill('kaiho'),...Array(shiinInDeck).fill('shiin')];
-  const shuffledDeck=shuffle(newDeck);
-
-  const newCards={}, newPeeked={};
-  ids.forEach(id=>{
-    newCards[id]=shuffledDeck.splice(0,cardsPerPlayer).map(t=>({type:t,revealed:false}));
-    newPeeked[id+'/peeked']=false;
-    newPeeked[id+'/roleReady']=true; // keep roles, no need to re-reveal
-  });
+  const newPeeked={};
+  ids.forEach(id=>{ newPeeked[id+'/peeked']=false; });
 
   const u={...baseUpdate};
   u[`rooms/${roomCode}/round`]=nextRound;
   u[`rooms/${roomCode}/cutsThisRound`]=0;
-  u[`rooms/${roomCode}/status`]='peek'; // show new cards to each player
+  u[`rooms/${roomCode}/status`]='peek';
   ids.forEach(id=>{
-    u[`rooms/${roomCode}/cards/${id}`]=newCards[id];
+    const hand=pool.splice(0,cardsPerPlayer).map(t=>({type:t,revealed:false}));
+    u[`rooms/${roomCode}/cards/${id}`]=hand;
   });
 
   try{
