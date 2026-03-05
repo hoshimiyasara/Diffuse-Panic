@@ -6,306 +6,286 @@
 <title>TIME BOMB</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0f;--surface:#13131a;--card-bg:#1c1c28;--accent:#ff3a3a;--accent2:#ff8c00;--safe:#00e676;--text:#f0f0f0;--muted:#666;--border:#2a2a3a;}
+:root{--bg:#0a0a0f;--sur:#13131a;--car:#1c1c28;--red:#ff3a3a;--ora:#ff8c00;--grn:#00e676;--txt:#f0f0f0;--mut:#666;--bdr:#2a2a3a;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;}
 .screen{display:none;flex-direction:column;min-height:100vh;padding:24px 20px;}
 .screen.active{display:flex;}
-
 /* HOME */
-#home{align-items:center;justify-content:center;gap:36px;background:radial-gradient(ellipse at 50% -10%,#3a0000 0%,var(--bg) 65%);}
-@keyframes glow{0%,100%{filter:drop-shadow(0 0 18px rgba(255,58,58,.4))}50%{filter:drop-shadow(0 0 40px rgba(255,58,58,.8))}}
+#home{align-items:center;justify-content:center;gap:32px;background:radial-gradient(ellipse at 50% -10%,#3a0000,var(--bg) 65%);}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 16px rgba(255,58,58,.4))}50%{filter:drop-shadow(0 0 36px rgba(255,58,58,.8))}}
 .logo-wrap{text-align:center;animation:glow 2.5s ease-in-out infinite;}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,20vw,128px);letter-spacing:8px;line-height:1;color:var(--accent);text-shadow:0 0 60px rgba(255,58,58,.5),0 4px 0 #800;}
-.logo-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(16px,4.5vw,26px);letter-spacing:16px;color:var(--accent2);margin-top:4px;}
-
+.logo{font-family:'Bebas Neue';font-size:clamp(70px,20vw,120px);letter-spacing:8px;line-height:1;color:var(--red);text-shadow:0 0 60px rgba(255,58,58,.5),0 4px 0 #800;}
+.logo-sub{font-family:'Bebas Neue';font-size:clamp(14px,4vw,24px);letter-spacing:16px;color:var(--ora);margin-top:4px;}
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border:none;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;width:100%;max-width:340px;letter-spacing:1px;}
-.btn-red{background:var(--accent);color:#fff;box-shadow:0 0 20px rgba(255,58,58,.35);}
-.btn-red:active{opacity:.85;transform:scale(.98);}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
-.btn-ghost:active{background:var(--surface);}
-.btn-sm{padding:8px 18px;font-size:13px;max-width:none;width:auto;}
-
-/* LOBBY */
-#lobby{gap:24px;padding-top:32px;align-items:center;}
-.screen-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:5px;color:var(--accent);text-align:center;}
-.field-label{font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
-.txt-input{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:8px;font-size:16px;font-family:'Noto Sans JP',sans-serif;outline:none;width:100%;max-width:340px;transition:border-color .15s;}
-.txt-input:focus{border-color:var(--accent);}
-.divider-or{display:flex;align-items:center;gap:12px;width:100%;max-width:340px;color:var(--muted);font-size:12px;letter-spacing:2px;}
-.divider-or::before,.divider-or::after{content:'';flex:1;height:1px;background:var(--border);}
-
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border:none;border-radius:6px;font-family:'Noto Sans JP';font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;width:100%;max-width:340px;letter-spacing:1px;}
+.br{background:var(--red);color:#fff;box-shadow:0 0 20px rgba(255,58,58,.3);}
+.br:active{opacity:.8;transform:scale(.98);}
+.bg{background:transparent;color:var(--txt);border:1px solid var(--bdr);}
+.bg:active{background:var(--sur);}
+.bs{padding:8px 18px;font-size:13px;max-width:none;width:auto;}
+/* FORMS */
+.stitle{font-family:'Bebas Neue';font-size:28px;letter-spacing:5px;color:var(--red);text-align:center;}
+.flbl{font-size:11px;letter-spacing:3px;color:var(--mut);text-transform:uppercase;margin-bottom:8px;}
+.inp{background:var(--sur);border:1px solid var(--bdr);color:var(--txt);padding:13px 16px;border-radius:8px;font-size:16px;font-family:'Noto Sans JP';outline:none;width:100%;max-width:340px;transition:border-color .15s;}
+.inp:focus{border-color:var(--red);}
+.or{display:flex;align-items:center;gap:12px;width:100%;max-width:340px;color:var(--mut);font-size:12px;letter-spacing:2px;}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--bdr);}
+.col{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;}
 /* WAITING */
-#waiting{gap:20px;align-items:center;padding-top:32px;}
-.room-code-box{background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:20px 32px;text-align:center;}
-.room-code{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:12px;color:var(--accent);line-height:1;}
-.player-list{width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;}
-.player-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:10px;}
-.player-row.me{border-color:var(--accent2);}
-.player-dot{width:8px;height:8px;border-radius:50%;background:var(--safe);flex-shrink:0;}
-.cnt-btn{width:48px;height:48px;border-radius:6px;border:2px solid var(--border);background:var(--surface);color:var(--text);font-size:18px;font-family:'Bebas Neue',sans-serif;cursor:pointer;transition:all .15s;}
-.cnt-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,58,58,.1);}
-
-/* ROLE REVEAL - each person on their own device */
-#roleReveal{align-items:center;justify-content:center;gap:24px;background:var(--bg);}
-.role-card-wrap{perspective:900px;}
-.role-card{width:min(78vw,310px);height:200px;border-radius:16px;cursor:pointer;transition:transform .55s;transform-style:preserve-3d;position:relative;}
-.role-card.flipped{transform:rotateY(180deg);}
-.role-card-face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
-.role-front{background:var(--surface);border:2px solid var(--border);}
-.role-back{transform:rotateY(180deg);}
-.role-back.terrorist{background:linear-gradient(135deg,#3a0000,#1a0000);border:2px solid var(--accent);}
-.role-back.agent{background:linear-gradient(135deg,#003a1a,#001a0a);border:2px solid var(--safe);}
-.role-icon{font-size:56px;}
-.role-name{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:4px;}
-.role-name.terrorist{color:var(--accent);}
-.role-name.agent{color:var(--safe);}
-.role-desc{font-size:13px;color:var(--muted);text-align:center;max-width:260px;line-height:1.6;}
-
+.codebox{background:var(--sur);border:2px solid var(--red);border-radius:12px;padding:18px 28px;text-align:center;}
+.code{font-family:'Bebas Neue';font-size:60px;letter-spacing:12px;color:var(--red);line-height:1;}
+.prow{background:var(--sur);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.prow.me{border-color:var(--ora);}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--grn);flex-shrink:0;}
+.cntbtn{width:46px;height:46px;border-radius:6px;border:2px solid var(--bdr);background:var(--sur);color:var(--txt);font-size:18px;font-family:'Bebas Neue';cursor:pointer;transition:all .15s;}
+.cntbtn.on{border-color:var(--red);color:var(--red);background:rgba(255,58,58,.1);}
+/* ROLE */
+#role{align-items:center;justify-content:center;gap:20px;background:var(--bg);}
+.rcard-wrap{perspective:900px;}
+.rcard{width:min(78vw,300px);height:190px;border-radius:16px;cursor:pointer;transition:transform .6s;transform-style:preserve-3d;position:relative;}
+.rcard.flip{transform:rotateY(180deg);}
+.rface{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.rfront{background:var(--sur);border:2px solid var(--bdr);}
+.rback{transform:rotateY(180deg);}
+.rback.terrorist{background:linear-gradient(135deg,#3a0000,#1a0000);border:2px solid var(--red);}
+.rback.agent{background:linear-gradient(135deg,#003a1a,#001a0a);border:2px solid var(--grn);}
+.ricon{font-size:52px;}
+.rname{font-family:'Bebas Neue';font-size:36px;letter-spacing:4px;}
+.rname.terrorist{color:var(--red);}
+.rname.agent{color:var(--grn);}
 /* GAME */
-#game{background:var(--bg);gap:14px;padding-top:14px;}
-.game-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}
-.round-badge{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--muted);}
-.timer-section{text-align:center;}
-.timer-ring-wrap{position:relative;width:110px;height:110px;margin:0 auto;}
-.timer-ring-bg{fill:none;stroke:var(--border);stroke-width:8;}
-.timer-ring-prog{fill:none;stroke:var(--safe);stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:55px 55px;transition:stroke-dashoffset .5s linear,stroke .5s;}
-.timer-val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:38px;}
-.wire-tally{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;}
-.wire-dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--border);background:var(--surface);transition:all .3s;}
-.wire-dot.cut{background:var(--safe);border-color:var(--safe);}
-.my-hand-section{background:var(--card-bg);border:2px solid var(--accent2);border-radius:12px;padding:14px;}
-.my-hand-title{font-size:11px;letter-spacing:3px;color:var(--accent2);margin-bottom:10px;}
-.hand-cards{display:flex;gap:8px;flex-wrap:wrap;}
-.hand-card{width:54px;height:76px;border-radius:8px;border:2px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;transition:all .2s;background:var(--surface);font-size:11px;color:var(--muted);font-weight:700;user-select:none;}
-.hand-card.selected{border-color:var(--accent2);box-shadow:0 0 14px rgba(255,140,0,.5);background:rgba(255,140,0,.08);}
-.hand-card.revealed-safe{background:rgba(0,230,118,.12);border-color:var(--safe);cursor:default;}
-.hand-card.revealed-bomb{background:rgba(255,58,58,.12);border-color:var(--accent);cursor:default;}
-.hand-card .card-icon{font-size:22px;}
-.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;}
-.player-tile{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;}
-.player-tile.is-me{border-color:var(--accent2);}
-.tile-name{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tile-cards{display:flex;gap:3px;flex-wrap:wrap;}
-.mini-card{width:22px;height:32px;border-radius:3px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--surface);}
-.mini-card.revealed-safe{background:rgba(0,230,118,.15);border-color:var(--safe);}
-.mini-card.revealed-bomb{background:rgba(255,58,58,.15);border-color:var(--accent);}
-.cut-banner{background:rgba(255,140,0,.1);border:1px solid var(--accent2);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;font-weight:700;color:var(--accent2);}
-.wait-banner{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;color:var(--muted);}
-.divider{height:1px;background:var(--border);width:100%;}
-
+#game{gap:14px;padding-top:14px;}
+.ghdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.rbadge{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:var(--mut);}
+.tring-wrap{position:relative;width:110px;height:110px;margin:0 auto;}
+.tring-bg{fill:none;stroke:var(--bdr);stroke-width:8;}
+.tring{fill:none;stroke:var(--grn);stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:55px 55px;transition:stroke-dashoffset .5s linear,stroke .5s;}
+.tval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:38px;}
+.wtally{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;}
+.wdot{width:13px;height:13px;border-radius:50%;border:2px solid var(--bdr);background:var(--sur);transition:all .3s;}
+.wdot.cut{background:var(--grn);border-color:var(--grn);}
+.hand-box{background:var(--car);border:2px solid var(--ora);border-radius:12px;padding:14px;}
+.hand-title{font-size:11px;letter-spacing:3px;color:var(--ora);margin-bottom:10px;}
+.cards{display:flex;gap:8px;flex-wrap:wrap;}
+.hcard{width:54px;height:76px;border-radius:8px;border:2px solid var(--bdr);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;transition:all .2s;background:var(--sur);font-size:11px;color:var(--mut);font-weight:700;user-select:none;}
+.hcard.sel{border-color:var(--ora);box-shadow:0 0 14px rgba(255,140,0,.5);background:rgba(255,140,0,.08);}
+.hcard.safe{background:rgba(0,230,118,.12);border-color:var(--grn);cursor:default;}
+.hcard.bomb{background:rgba(255,58,58,.12);border-color:var(--red);cursor:default;}
+.hcard.done{opacity:.35;cursor:default;}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;}
+.ptile{background:var(--car);border:1px solid var(--bdr);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;}
+.ptile.me{border-color:var(--ora);}
+.tname{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tcards{display:flex;gap:3px;flex-wrap:wrap;}
+.mcard{width:22px;height:32px;border-radius:3px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:11px;background:var(--sur);}
+.mcard.safe{background:rgba(0,230,118,.15);border-color:var(--grn);}
+.mcard.bomb{background:rgba(255,58,58,.15);border-color:var(--red);}
+.banner-go{background:rgba(255,140,0,.1);border:1px solid var(--ora);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;font-weight:700;color:var(--ora);}
+.banner-wait{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;text-align:center;font-size:13px;color:var(--mut);}
+.hr{height:1px;background:var(--bdr);width:100%;}
 /* RESULT */
 #result{align-items:center;justify-content:center;gap:22px;text-align:center;}
-#result.agent-win{background:radial-gradient(ellipse at center,#003a1a 0%,var(--bg) 70%);}
-#result.terrorist-win{background:radial-gradient(ellipse at center,#3a0000 0%,var(--bg) 70%);}
+#result.aw{background:radial-gradient(ellipse at center,#003a1a,var(--bg) 70%);}
+#result.tw{background:radial-gradient(ellipse at center,#3a0000,var(--bg) 70%);}
 @keyframes bounce{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
-.result-icon{font-size:80px;animation:bounce .7s ease-in-out infinite alternate;}
-.result-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,10vw,64px);letter-spacing:6px;}
-.result-title.agent-color{color:var(--safe);text-shadow:0 0 40px rgba(0,230,118,.5);}
-.result-title.terrorist-color{color:var(--accent);text-shadow:0 0 40px rgba(255,58,58,.5);}
-.result-reason{color:var(--muted);font-size:14px;}
-
+.ricon2{font-size:80px;animation:bounce .7s ease-in-out infinite alternate;}
+.rtitle{font-family:'Bebas Neue';font-size:clamp(36px,10vw,64px);letter-spacing:6px;}
+.rtitle.ac{color:var(--grn);text-shadow:0 0 40px rgba(0,230,118,.5);}
+.rtitle.tc{color:var(--red);text-shadow:0 0 40px rgba(255,58,58,.5);}
 /* RULES */
 #rules{gap:18px;max-width:600px;margin:0 auto;}
-.rules-section{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
-.rules-section h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--accent);margin-bottom:10px;}
-.rules-section p,.rules-section li{font-size:14px;line-height:1.8;color:#bbb;}
-.rules-section ul{padding-left:16px;}
-.rules-section li{margin-bottom:4px;}
+.rsec{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:16px 18px;}
+.rsec h3{font-family:'Bebas Neue';font-size:20px;letter-spacing:3px;color:var(--red);margin-bottom:10px;}
+.rsec p,.rsec li{font-size:14px;line-height:1.8;color:#bbb;}
+.rsec ul{padding-left:16px;}
 table{width:100%;border-collapse:collapse;font-size:13px;}
-th,td{padding:7px 10px;border:1px solid var(--border);text-align:center;}
-th{background:var(--card-bg);color:var(--muted);}
-
+th,td{padding:7px 10px;border:1px solid var(--bdr);text-align:center;}
+th{background:var(--car);color:var(--mut);}
 /* MODAL */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
-.overlay.open{opacity:1;pointer-events:all;}
-.modal{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 22px;max-width:340px;width:100%;text-align:center;}
-.modal h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;margin-bottom:12px;}
-.modal p{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
-.modal-btns{display:flex;gap:10px;justify-content:center;}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
+.ov.open{opacity:1;pointer-events:all;}
+.modal{background:var(--car);border:1px solid var(--bdr);border-radius:16px;padding:28px 22px;max-width:340px;width:100%;text-align:center;}
+.modal h3{font-family:'Bebas Neue';font-size:24px;letter-spacing:4px;margin-bottom:12px;}
+.modal p{font-size:14px;color:var(--mut);margin-bottom:20px;line-height:1.6;}
+.mbtns{display:flex;gap:10px;justify-content:center;}
 @keyframes spin{to{transform:rotate(360deg)}}
-.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
-.center{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;}
-.nav-row{display:flex;gap:8px;flex-wrap:wrap;}
-.nav-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.spin{width:32px;height:32px;border:3px solid var(--bdr);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;}
+.navrow{display:flex;gap:8px;flex-wrap:wrap;}
+.nb{background:transparent;border:1px solid var(--bdr);color:var(--mut);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP';}
 </style>
 </head>
 <body>
 
-<!-- HOME -->
+<!-- ═══ HOME ═══ -->
 <div id="home" class="screen active">
   <div class="logo-wrap">
-    <svg width="90" height="90" viewBox="0 0 100 100" fill="none" style="display:block;margin:0 auto 8px">
+    <svg width="86" height="86" viewBox="0 0 100 100" fill="none" style="display:block;margin:0 auto 8px">
       <circle cx="50" cy="58" r="34" fill="#1a1a1a" stroke="#ff3a3a" stroke-width="2.5"/>
       <circle cx="50" cy="58" r="27" fill="#111"/>
       <rect x="46" y="24" width="8" height="14" rx="4" fill="#444"/>
       <path d="M54 24 Q70 10 82 18" stroke="#ff8c00" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <circle cx="82" cy="18" r="4" fill="#ffd700"><animate attributeName="r" values="4;6;4" dur=".5s" repeatCount="indefinite"/><animate attributeName="fill" values="#ffd700;#fff;#ffd700" dur=".5s" repeatCount="indefinite"/></circle>
-      <circle cx="40" cy="52" r="5" fill="#2a2a2a"/><circle cx="58" cy="60" r="3" fill="#2a2a2a"/>
+      <circle cx="82" cy="18" r="4" fill="#ffd700">
+        <animate attributeName="r" values="4;6;4" dur=".5s" repeatCount="indefinite"/>
+        <animate attributeName="fill" values="#ffd700;#fff;#ffd700" dur=".5s" repeatCount="indefinite"/>
+      </circle>
     </svg>
     <div class="logo">TIME<br>BOMB</div>
     <div class="logo-sub">タイムボム</div>
   </div>
-  <div class="center">
-    <button class="btn btn-red" id="btn-goto-lobby">🎮 オンラインでプレイ</button>
-    <button class="btn btn-ghost" id="btn-goto-rules">📖 ルール説明</button>
+  <div class="col">
+    <button class="btn br" id="B_TO_LOBBY">🎮 オンラインでプレイ</button>
+    <button class="btn bg" id="B_TO_RULES">📖 ルール説明</button>
   </div>
 </div>
 
-<!-- LOBBY -->
+<!-- ═══ LOBBY ═══ -->
 <div id="lobby" class="screen">
-  <div class="screen-title">ONLINE</div>
-  <div class="center">
+  <div class="stitle">ONLINE</div>
+  <div class="col" style="margin-top:16px;">
     <div style="width:100%;max-width:340px;">
-      <div class="field-label">あなたの名前</div>
-      <input id="myName" class="txt-input" placeholder="名前を入力" maxlength="12" autocomplete="off">
+      <div class="flbl">あなたの名前</div>
+      <input id="INP_NAME" class="inp" placeholder="名前を入力" maxlength="12" autocomplete="off">
     </div>
-    <button class="btn btn-red" id="btn-create-room">🏠 部屋を作る（ホスト）</button>
-    <div class="divider-or">OR</div>
+    <button class="btn br" id="B_CREATE">🏠 部屋を作る（ホスト）</button>
+    <div class="or">OR</div>
     <div style="width:100%;max-width:340px;">
-      <div class="field-label">部屋コード（4桁）</div>
-      <input id="joinCode" class="txt-input" placeholder="0000" maxlength="4" inputmode="numeric"
+      <div class="flbl">部屋コード（4桁）</div>
+      <input id="INP_CODE" class="inp" placeholder="0000" maxlength="4" inputmode="numeric"
         style="letter-spacing:8px;font-family:'Bebas Neue';font-size:28px;text-align:center;" autocomplete="off">
     </div>
-    <button class="btn btn-ghost" id="btn-join-room">🚪 部屋に入る</button>
-    <button class="btn btn-ghost btn-sm" id="btn-lobby-back" style="margin-top:4px;">← 戻る</button>
+    <button class="btn bg" id="B_JOIN">🚪 部屋に入る</button>
+    <button class="btn bg bs" id="B_LOBBY_BACK">← 戻る</button>
   </div>
 </div>
 
-<!-- WAITING ROOM -->
-<div id="waiting" class="screen">
-  <div class="screen-title">WAITING</div>
-  <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-align:center;">友達にコードを共有</div>
-  <div class="room-code-box">
-    <div class="room-code" id="displayRoomCode">----</div>
-    <button class="btn btn-ghost btn-sm" id="btn-copy-code" style="margin-top:10px;">📋 コピー</button>
+<!-- ═══ WAITING ═══ -->
+<div id="waiting" class="screen" style="align-items:center;gap:20px;padding-top:28px;">
+  <div class="stitle">WAITING ROOM</div>
+  <div style="font-size:12px;color:var(--mut);letter-spacing:2px;">このコードを友達に送ろう</div>
+  <div class="codebox">
+    <div class="code" id="DISP_CODE">----</div>
+    <button class="btn bg bs" id="B_COPY" style="margin-top:10px;">📋 コピー</button>
   </div>
-  <div id="hostCountWrap" style="display:none;text-align:center;width:100%;max-width:340px;">
-    <div class="field-label" style="margin-bottom:10px;">プレイ人数を設定</div>
-    <div style="display:flex;gap:8px;justify-content:center;" id="hostCntRow"></div>
+  <div id="HOST_CNT_WRAP" style="display:none;text-align:center;width:100%;max-width:340px;">
+    <div class="flbl" style="margin-bottom:10px;">プレイ人数</div>
+    <div id="HOST_CNT_ROW" style="display:flex;gap:8px;justify-content:center;"></div>
   </div>
   <div style="width:100%;max-width:340px;">
-    <div class="field-label">参加中プレイヤー</div>
-    <div class="player-list" id="waitingPlayerList"></div>
+    <div class="flbl">参加中プレイヤー</div>
+    <div id="PLAYER_LIST" style="display:flex;flex-direction:column;gap:8px;"></div>
   </div>
-  <div id="hostStartWrap" style="display:none;width:100%;max-width:340px;">
-    <button class="btn btn-red" id="btn-host-start">▶ ゲーム開始！</button>
+  <div id="HOST_START_WRAP" style="display:none;width:100%;max-width:340px;">
+    <button class="btn br" id="B_START">▶ ゲーム開始！</button>
   </div>
-  <div id="guestWaitMsg" style="display:none;text-align:center;color:var(--muted);font-size:14px;">
+  <div id="GUEST_WAIT" style="display:none;color:var(--mut);font-size:14px;text-align:center;">
     ホストがゲームを開始するまでお待ちください…
   </div>
-  <button class="btn btn-ghost btn-sm" id="btn-leave-waiting">退出</button>
+  <button class="btn bg bs" id="B_LEAVE_W">退出する</button>
 </div>
 
-<!-- ROLE REVEAL: each player sees their own role on their own device -->
-<div id="roleReveal" class="screen">
-  <div style="font-size:13px;color:var(--muted);letter-spacing:2px;text-align:center;">あなたの役職</div>
-  <div style="font-weight:700;font-size:18px;text-align:center;" id="myRolePlayerName"></div>
-  <div class="role-card-wrap">
-    <div class="role-card" id="roleCard">
-      <div class="role-card-face role-front">
-        <div style="font-family:'Bebas Neue';font-size:22px;color:var(--muted);letter-spacing:4px;">SECRET</div>
-        <div style="font-size:42px;">🃏</div>
-        <div style="font-size:12px;color:var(--muted);">タップしてめくる</div>
+<!-- ═══ ROLE (each player on own device) ═══ -->
+<div id="role" class="screen">
+  <div style="font-size:12px;color:var(--mut);letter-spacing:3px;text-align:center;">YOUR SECRET ROLE</div>
+  <div style="font-weight:700;font-size:18px;text-align:center;" id="ROLE_PNAME"></div>
+  <div class="rcard-wrap">
+    <div class="rcard" id="RCARD">
+      <div class="rface rfront">
+        <div style="font-family:'Bebas Neue';font-size:20px;color:var(--mut);letter-spacing:4px;">タップしてめくる</div>
+        <div style="font-size:40px;">🃏</div>
       </div>
-      <div class="role-card-face role-back" id="roleBack">
-        <div class="role-icon" id="roleIcon">🕵️</div>
-        <div class="role-name" id="roleName">エージェント</div>
+      <div class="rface rback" id="RBACK">
+        <div class="ricon" id="RICON">🕵️</div>
+        <div class="rname" id="RNAME">エージェント</div>
       </div>
     </div>
   </div>
-  <div class="role-desc" id="roleDesc"></div>
-  <div id="roleReadyWrap" style="display:none;width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;align-items:center;">
-    <div id="roleReadyStatus" style="font-size:13px;color:var(--muted);text-align:center;"></div>
-    <button class="btn btn-red" id="btn-role-ready">準備完了！</button>
+  <div style="font-size:13px;color:var(--mut);text-align:center;max-width:260px;line-height:1.6;" id="RDESC"></div>
+  <div id="READY_WRAP" style="display:none;width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;align-items:center;">
+    <div style="font-size:13px;color:var(--mut);text-align:center;" id="READY_STATUS"></div>
+    <button class="btn br" id="B_READY">✅ 準備完了！</button>
   </div>
 </div>
 
-<!-- GAME -->
+<!-- ═══ GAME ═══ -->
 <div id="game" class="screen">
-  <div class="game-header">
-    <div class="round-badge">ROUND <span id="roundNum">1</span>/<span id="totalRounds">4</span></div>
-    <div class="nav-row">
-      <button class="nav-btn" id="btn-show-rules-modal">📖 ルール</button>
-      <button class="nav-btn" id="btn-show-reset-modal">↩</button>
+  <div class="ghdr">
+    <div class="rbadge">ROUND <span id="G_ROUND">1</span>/<span id="G_TOTAL">?</span></div>
+    <div class="navrow">
+      <button class="nb" id="B_RULES_M">📖</button>
+      <button class="nb" id="B_RESET_M">↩ リセット</button>
     </div>
   </div>
 
-  <div class="timer-section">
-    <div class="timer-ring-wrap">
-      <svg width="110" height="110" viewBox="0 0 110 110">
-        <circle class="timer-ring-bg" cx="55" cy="55" r="48"/>
-        <circle class="timer-ring-prog" id="timerRing" cx="55" cy="55" r="48" stroke-dasharray="301.6" stroke-dashoffset="0"/>
-      </svg>
-      <div class="timer-val" id="timerVal">3:00</div>
-    </div>
-    <div id="timerBtns" style="display:none;gap:8px;justify-content:center;margin-top:8px;">
-      <button class="btn btn-sm btn-ghost" id="btn-timer-toggle">▶ 開始</button>
-      <button class="btn btn-sm btn-ghost" id="btn-timer-reset">↺ リセット</button>
-    </div>
-  </div>
-
+  <!-- Timer -->
   <div style="text-align:center;">
-    <div style="font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:6px;">
-      WIRES CUT: <span id="wiresCutCount">0</span> / <span id="wiresNeeded">—</span>
+    <div class="tring-wrap">
+      <svg width="110" height="110" viewBox="0 0 110 110">
+        <circle class="tring-bg" cx="55" cy="55" r="48"/>
+        <circle class="tring" id="TRING" cx="55" cy="55" r="48" stroke-dasharray="301.6" stroke-dashoffset="0"/>
+      </svg>
+      <div class="tval" id="TVAL">3:00</div>
     </div>
-    <div class="wire-tally" id="wireTally"></div>
-  </div>
-
-  <div class="divider"></div>
-  <div id="turnBanner"></div>
-
-  <div class="my-hand-section">
-    <div class="my-hand-title">✋ 自分の手札</div>
-    <div class="hand-cards" id="myHandCards"></div>
-    <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-      <button class="btn btn-sm btn-red" id="cutBtn" disabled>✂️ カット！</button>
-      <span id="cutBtnHint" style="font-size:12px;color:var(--muted);">カードを選んでください</span>
+    <div id="TIMER_BTNS" style="display:none;gap:8px;justify-content:center;margin-top:8px;">
+      <button class="btn bg bs" id="B_TIMER_TOG">▶ 開始</button>
+      <button class="btn bg bs" id="B_TIMER_RST">↺ リセット</button>
     </div>
   </div>
 
-  <div style="font-size:11px;color:var(--muted);letter-spacing:2px;">ALL PLAYERS</div>
-  <div class="players-grid" id="playersGrid"></div>
+  <!-- Wire progress -->
+  <div style="text-align:center;">
+    <div style="font-size:11px;color:var(--mut);letter-spacing:2px;margin-bottom:6px;">
+      WIRES CUT: <span id="G_WCUT">0</span> / <span id="G_WTOT">?</span>
+    </div>
+    <div class="wtally" id="WTALLY"></div>
+  </div>
 
-  <div id="nextRoundWrap" style="display:none;text-align:center;">
-    <button class="btn btn-red btn-sm" id="btn-next-round">次のラウンドへ →</button>
+  <div class="hr"></div>
+  <div id="TURN_BANNER"></div>
+
+  <!-- My hand -->
+  <div class="hand-box">
+    <div class="hand-title">✋ 自分の手札</div>
+    <div class="cards" id="MY_HAND"></div>
+    <div style="margin-top:10px;display:flex;gap:8px;align-items:center;">
+      <button class="btn br bs" id="B_CUT" disabled>✂️ カット！</button>
+      <span id="CUT_HINT" style="font-size:12px;color:var(--mut);">カードを選んでください</span>
+    </div>
+  </div>
+
+  <!-- All players -->
+  <div style="font-size:11px;color:var(--mut);letter-spacing:2px;">ALL PLAYERS</div>
+  <div class="pgrid" id="PGRID"></div>
+
+  <div id="NEXT_ROUND_WRAP" style="display:none;text-align:center;">
+    <button class="btn br bs" id="B_NEXT_ROUND">次のラウンドへ →</button>
   </div>
 </div>
 
-<!-- RESULT -->
+<!-- ═══ RESULT ═══ -->
 <div id="result" class="screen">
-  <div class="result-icon" id="resultIcon">🎉</div>
-  <div class="result-title" id="resultTitle">AGENTS WIN</div>
-  <div class="result-reason" id="resultReason"></div>
-  <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;margin-top:8px;" id="resultRoles"></div>
+  <div class="ricon2" id="R_ICON">🎉</div>
+  <div class="rtitle" id="R_TITLE">AGENTS WIN</div>
+  <div style="color:var(--mut);font-size:14px;" id="R_REASON"></div>
+  <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px;margin-top:8px;" id="R_ROLES"></div>
   <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:10px;margin-top:16px;">
-    <button class="btn btn-red" id="btn-restart">もう一度プレイ</button>
-    <button class="btn btn-ghost" id="btn-leave-result">部屋を出る</button>
+    <button class="btn br" id="B_RESTART">もう一度プレイ</button>
+    <button class="btn bg" id="B_LEAVE_R">部屋を出る</button>
   </div>
 </div>
 
-<!-- RULES -->
+<!-- ═══ RULES ═══ -->
 <div id="rules" class="screen" style="padding-top:24px;">
-  <div class="screen-title">RULES</div>
-  <div class="rules-section">
+  <div class="stitle">RULES</div>
+  <div class="rsec">
     <h3>🎯 目的</h3>
-    <p><strong>エージェント陣営</strong>：全ての安全ワイヤーをカットして爆弾を無力化する。<br>
-    <strong>テロリスト陣営</strong>：爆弾カードをカットさせる、または時間切れにさせる。</p>
+    <p><strong>エージェント</strong>：全ての安全ワイヤーをカットして爆弾を解除する。<br>
+    <strong>テロリスト</strong>：爆弾カードをカットさせるか、時間切れにさせる。</p>
   </div>
-  <div class="rules-section">
-    <h3>📋 役職</h3>
-    <ul>
-      <li>🕵️ <strong>エージェント</strong>：多数派。安全なワイヤーを全てカットすれば勝利</li>
-      <li>🧨 <strong>テロリスト</strong>：少数派。爆弾カードをカットさせれば勝利</li>
-    </ul>
-    <p style="margin-top:8px;font-size:13px;color:var(--muted);">※「爆弾」は役職ではなくワイヤーカードの1種。誰が持つか秘密。</p>
-  </div>
-  <div class="rules-section">
+  <div class="rsec">
     <h3>🃏 カード構成</h3>
     <table>
-      <tr><th>人数</th><th>テロリスト</th><th>エージェント</th><th>爆弾カード</th><th>安全ワイヤー</th></tr>
+      <tr><th>人数</th><th>テロリスト</th><th>エージェント</th><th>爆弾</th><th>安全ワイヤー</th></tr>
       <tr><td>4</td><td>1</td><td>3</td><td>1</td><td>15</td></tr>
       <tr><td>5</td><td>2</td><td>3</td><td>1</td><td>19</td></tr>
       <tr><td>6</td><td>2</td><td>4</td><td>1</td><td>23</td></tr>
@@ -313,613 +293,587 @@ th{background:var(--card-bg);color:var(--muted);}
       <tr><td>8</td><td>3</td><td>5</td><td>1</td><td>31</td></tr>
     </table>
   </div>
-  <div class="rules-section">
-    <h3>🌐 遊び方（オンライン）</h3>
+  <div class="rsec">
+    <h3>🌐 オンラインの遊び方</h3>
     <ul>
-      <li>ホストが「部屋を作る」→ 4桁コードを友達に共有</li>
+      <li>ホストが部屋を作り、4桁コードを友達に共有</li>
       <li>各自のスマホでコードを入力して参加</li>
-      <li>全員揃ったらホストが「ゲーム開始」</li>
-      <li>各自のスマホで自分の役職カードをめくって確認</li>
-      <li>「準備完了」を押したらゲーム開始！</li>
-      <li>自分のスマホで手札からカードを選んでカット</li>
+      <li>ホストが「ゲーム開始」を押す</li>
+      <li><strong>各自のスマホで</strong>役職カードをタップしてめくる</li>
+      <li>「準備完了」を全員が押すとゲーム開始</li>
+      <li>各自のスマホで手札からカードを選んでカット</li>
     </ul>
   </div>
-  <button class="btn btn-ghost btn-sm" id="btn-rules-back" style="align-self:center;max-width:200px;">← ホームへ</button>
+  <button class="btn bg bs" id="B_RULES_BACK" style="align-self:center;">← ホームへ</button>
 </div>
 
-<!-- MODALS -->
-<div class="overlay" id="resetModal">
+<!-- ═══ MODALS ═══ -->
+<div class="ov" id="M_RESET">
   <div class="modal">
     <h3>⚠️ リセット</h3>
-    <p>ゲームをやり直しますか？<br>ホストのみ再スタートできます。</p>
-    <div class="modal-btns">
-      <button class="btn btn-ghost btn-sm" id="btn-reset-cancel">キャンセル</button>
-      <button class="btn btn-red btn-sm" id="btn-reset-confirm">リセット</button>
+    <p>ゲームをやり直しますか？</p>
+    <div class="mbtns">
+      <button class="btn bg bs" id="B_RST_NO">キャンセル</button>
+      <button class="btn br bs" id="B_RST_YES">リセット</button>
     </div>
   </div>
 </div>
-<div class="overlay" id="rulesModal">
+<div class="ov" id="M_RULES">
   <div class="modal">
-    <h3 style="color:var(--accent);">📖 クイックルール</h3>
+    <h3 style="color:var(--red);">📖 クイックルール</h3>
     <p style="text-align:left;font-size:13px;color:#bbb;line-height:1.8;">
-      役職：🕵️ エージェント / 🧨 テロリスト<br>
-      爆弾は役職ではなくカードの1種<br><br>
-      🟢 安全ワイヤー → 次へ進む<br>
-      🔴 爆弾カード → テロリスト勝利<br>
-      全ワイヤーカット → エージェント勝利
+      🕵️ エージェント：安全ワイヤーを全部カット → 勝利<br>
+      🧨 テロリスト：爆弾カードをカットさせる → 勝利<br><br>
+      ✅ 安全ワイヤー → 次へ<br>
+      💣 爆弾カード → テロリスト勝利<br>
+      ⏰ 時間切れ → テロリスト勝利
     </p>
-    <button class="btn btn-ghost btn-sm" id="btn-rules-modal-close" style="margin-top:4px;">閉じる</button>
+    <button class="btn bg bs" id="B_RULES_M_CLOSE">閉じる</button>
   </div>
 </div>
-<div class="overlay" id="loadingOverlay">
+<div class="ov" id="M_LOADING">
   <div class="modal" style="gap:16px;display:flex;flex-direction:column;align-items:center;">
-    <div class="spinner"></div>
-    <div id="loadingMsg" style="color:var(--muted);font-size:14px;">接続中…</div>
+    <div class="spin"></div>
+    <div id="LOADING_MSG" style="color:var(--mut);font-size:14px;">接続中…</div>
   </div>
 </div>
-<div class="overlay" id="errorModal">
+<div class="ov" id="M_ERR">
   <div class="modal">
-    <h3 style="color:var(--accent);">⚠️ エラー</h3>
-    <p id="errorMsg">エラーが発生しました。</p>
-    <button class="btn btn-ghost btn-sm" id="btn-error-close">閉じる</button>
+    <h3 style="color:var(--red);">⚠️ エラー</h3>
+    <p id="ERR_MSG">エラーが発生しました。</p>
+    <button class="btn bg bs" id="B_ERR_CLOSE">閉じる</button>
   </div>
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { initializeApp }        from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, get, update, remove, onValue, off, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+                                 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
+/* ── Firebase init ── */
 const db = getDatabase(initializeApp({
-  apiKey: "AIzaSyBglVw9lN4f6ygzEsxopgpVThpzK-hQOgw",
-  authDomain: "timebomb-bfca1.firebaseapp.com",
-  databaseURL: "https://timebomb-bfca1-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "timebomb-bfca1",
-  storageBucket: "timebomb-bfca1.firebasestorage.app",
+  apiKey:            "AIzaSyBglVw9lN4f6ygzEsxopgpVThpzK-hQOgw",
+  authDomain:        "timebomb-bfca1.firebaseapp.com",
+  databaseURL:       "https://timebomb-bfca1-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:         "timebomb-bfca1",
+  storageBucket:     "timebomb-bfca1.firebasestorage.app",
   messagingSenderId: "184196559761",
-  appId: "1:184196559761:web:180412767b030d9cd72030",
+  appId:             "1:184196559761:web:180412767b030d9cd72030",
 }));
 
 const ROUND_SEC = 180;
-const PLAYER_TABLE = {
-  4:{t:1,a:3,w:15}, 5:{t:2,a:3,w:19}, 6:{t:2,a:4,w:23},
-  7:{t:3,a:4,w:27}, 8:{t:3,a:5,w:31},
-};
+const PT = {4:{t:1,a:3,w:15},5:{t:2,a:3,w:19},6:{t:2,a:4,w:23},7:{t:3,a:4,w:27},8:{t:3,a:5,w:31}};
 
-// ── State ──
+/* ── App state ── */
 let myId = null, myName = '', roomCode = null, isHost = false;
-let roomRef = null, gameState = null;
-let timerInterval = null, selectedCard = null, lastTimerRunning = null;
-let roleFlipped = false;
+let roomRef = null, gs = null;           // gs = gameState snapshot value
+let tmr = null, selCard = null, lastTmrRunning = null, didFlip = false;
 
-// ── DOM helpers ──
-const $ = id => document.getElementById(id);
-const showScreen = id => { document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); $(id).classList.add('active'); };
-const openModal  = id => $(id).classList.add('open');
-const closeModal = id => $(id).classList.remove('open');
-const showLoading = msg => { $('loadingMsg').textContent = msg||'接続中…'; openModal('loadingOverlay'); };
-const hideLoading = () => closeModal('loadingOverlay');
-const showError   = msg => { $('errorMsg').textContent = msg; openModal('errorModal'); };
+/* ── Helpers ── */
+const el    = id => document.getElementById(id);
+const go    = id => { document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); el(id).classList.add('active'); };
+const mopen = id => el(id).classList.add('open');
+const mclose= id => el(id).classList.remove('open');
+const load  = msg=> { el('LOADING_MSG').textContent=msg||'接続中…'; mopen('M_LOADING'); };
+const unload= ()  => mclose('M_LOADING');
+const err   = msg => { el('ERR_MSG').textContent=msg; mopen('M_ERR'); };
 
-// ── Wire up all buttons on DOMContentLoaded ──
-document.addEventListener('DOMContentLoaded', () => {
-  $('btn-goto-lobby').addEventListener('click', () => showScreen('lobby'));
-  $('btn-goto-rules').addEventListener('click', () => showScreen('rules'));
-  $('btn-lobby-back').addEventListener('click', () => showScreen('home'));
-  $('btn-rules-back').addEventListener('click', () => showScreen('home'));
-  $('btn-create-room').addEventListener('click', createRoom);
-  $('btn-join-room').addEventListener('click', joinRoom);
-  $('btn-copy-code').addEventListener('click', copyCode);
-  $('btn-host-start').addEventListener('click', hostStartGame);
-  $('btn-leave-waiting').addEventListener('click', leaveRoom);
-  $('roleCard').addEventListener('click', flipRoleCard);
-  $('btn-role-ready').addEventListener('click', markReady);
-  $('btn-timer-toggle').addEventListener('click', hostToggleTimer);
-  $('btn-timer-reset').addEventListener('click', hostResetTimer);
-  $('cutBtn').addEventListener('click', executeCut);
-  $('btn-next-round').addEventListener('click', hostNextRound);
-  $('btn-restart').addEventListener('click', hostRestartGame);
-  $('btn-leave-result').addEventListener('click', leaveRoom);
-  $('btn-show-rules-modal').addEventListener('click', () => openModal('rulesModal'));
-  $('btn-show-reset-modal').addEventListener('click', () => openModal('resetModal'));
-  $('btn-reset-cancel').addEventListener('click', () => closeModal('resetModal'));
-  $('btn-reset-confirm').addEventListener('click', doReset);
-  $('btn-rules-modal-close').addEventListener('click', () => closeModal('rulesModal'));
-  $('btn-error-close').addEventListener('click', () => closeModal('errorModal'));
-});
+/* ── Button wiring (runs as soon as module executes — DOM is already ready) ── */
+el('B_TO_LOBBY') .addEventListener('click', ()=>go('lobby'));
+el('B_TO_RULES') .addEventListener('click', ()=>go('rules'));
+el('B_LOBBY_BACK').addEventListener('click', ()=>go('home'));
+el('B_RULES_BACK').addEventListener('click', ()=>go('home'));
+el('B_CREATE')   .addEventListener('click', createRoom);
+el('B_JOIN')     .addEventListener('click', joinRoom);
+el('B_COPY')     .addEventListener('click', copyCode);
+el('B_START')    .addEventListener('click', hostStart);
+el('B_LEAVE_W')  .addEventListener('click', leaveRoom);
+el('RCARD')      .addEventListener('click', flipRole);
+el('B_READY')    .addEventListener('click', markReady);
+el('B_TIMER_TOG').addEventListener('click', hostTimerToggle);
+el('B_TIMER_RST').addEventListener('click', hostTimerReset);
+el('B_CUT')      .addEventListener('click', doCut);
+el('B_NEXT_ROUND').addEventListener('click', hostNextRound);
+el('B_RESTART')  .addEventListener('click', hostRestart);
+el('B_LEAVE_R')  .addEventListener('click', leaveRoom);
+el('B_RULES_M')  .addEventListener('click', ()=>mopen('M_RULES'));
+el('B_RESET_M')  .addEventListener('click', ()=>mopen('M_RESET'));
+el('B_RST_NO')   .addEventListener('click', ()=>mclose('M_RESET'));
+el('B_RST_YES')  .addEventListener('click', doReset);
+el('B_RULES_M_CLOSE').addEventListener('click', ()=>mclose('M_RULES'));
+el('B_ERR_CLOSE').addEventListener('click', ()=>mclose('M_ERR'));
 
-// ─────────────────────────────────────────
-// CREATE / JOIN
-// ─────────────────────────────────────────
+/* ════════════════════════════════════════
+   CREATE / JOIN
+════════════════════════════════════════ */
 async function createRoom() {
-  const name = $('myName').value.trim();
-  if (!name) { showError('名前を入力してください'); return; }
+  const name = el('INP_NAME').value.trim();
+  if (!name) { err('名前を入力してください'); return; }
   myName = name; isHost = true;
-  roomCode = String(Math.floor(1000 + Math.random() * 9000));
-  myId = 'p' + Date.now() + Math.random().toString(36).slice(2,6);
-  showLoading('部屋を作成中…');
+  roomCode = String(1000 + Math.floor(Math.random()*9000));
+  myId = genId();
+  saveMyId(myId);
+  load('部屋を作成中…');
   try {
-    roomRef = ref(db, 'rooms/' + roomCode);
+    roomRef = ref(db, 'rooms/'+roomCode);
     await set(roomRef, {
       host: myId, status: 'waiting', playerCount: 4,
       players: { [myId]: { name: myName, ready: false } },
       createdAt: serverTimestamp(),
     });
-    hideLoading();
-    enterWaiting();
-  } catch(e) { hideLoading(); showError('作成失敗: ' + e.message); }
+    unload(); enterWaiting();
+  } catch(e) { unload(); err('作成失敗: '+e.message); }
 }
 
 async function joinRoom() {
-  const name = $('myName').value.trim();
-  const code = $('joinCode').value.trim();
-  if (!name) { showError('名前を入力してください'); return; }
-  if (code.length !== 4) { showError('4桁のコードを入力してください'); return; }
+  const name = el('INP_NAME').value.trim();
+  const code = el('INP_CODE').value.trim();
+  if (!name) { err('名前を入力してください'); return; }
+  if (code.length !== 4) { err('4桁のコードを入力してください'); return; }
   myName = name; roomCode = code; isHost = false;
-  myId = 'p' + Date.now() + Math.random().toString(36).slice(2,6);
-  showLoading('接続中…');
+  myId = genId();
+  saveMyId(myId);
+  load('接続中…');
   try {
-    roomRef = ref(db, 'rooms/' + roomCode);
+    roomRef = ref(db, 'rooms/'+roomCode);
     const snap = await get(roomRef);
-    if (!snap.exists()) { hideLoading(); showError('部屋が見つかりません'); return; }
+    if (!snap.exists())            { unload(); err('部屋が見つかりません'); return; }
     const d = snap.val();
-    if (d.status !== 'waiting') { hideLoading(); showError('ゲームはすでに開始しています'); return; }
-    const count = Object.keys(d.players || {}).length;
-    if (count >= 8) { hideLoading(); showError('満員です'); return; }
-    await update(ref(db, 'rooms/' + roomCode + '/players'), { [myId]: { name: myName, ready: false } });
-    hideLoading();
-    enterWaiting();
-  } catch(e) { hideLoading(); showError('接続失敗: ' + e.message); }
+    if (d.status !== 'waiting')    { unload(); err('ゲームはすでに開始しています'); return; }
+    if (Object.keys(d.players||{}).length >= 8) { unload(); err('満員です'); return; }
+    await update(ref(db,'rooms/'+roomCode+'/players'), { [myId]: { name: myName, ready: false } });
+    unload(); enterWaiting();
+  } catch(e) { unload(); err('接続失敗: '+e.message); }
 }
 
-// ─────────────────────────────────────────
-// LEAVE — removes player from Firebase
-// ─────────────────────────────────────────
-async function leaveRoom() {
-  // detach listener first
-  if (roomRef) { off(roomRef); }
-  // remove self from DB
-  if (roomCode && myId) {
-    try { await remove(ref(db, 'rooms/' + roomCode + '/players/' + myId)); } catch(_) {}
-  }
-  // cleanup local state
-  stopTimer();
-  roomRef = null; roomCode = null; myId = null;
-  isHost = false; gameState = null; selectedCard = null;
-  lastTimerRunning = null; roleFlipped = false;
-  showScreen('home');
+/* ════════════════════════════════════════
+   LEAVE  ← fixed: navigate first, delete in background
+════════════════════════════════════════ */
+function leaveRoom() {
+  /* 1. Stop listening immediately */
+  if (roomRef) off(roomRef);
+  /* 2. Navigate home immediately — no await */
+  stopTmr();
+  go('home');
+  /* 3. Delete self from DB in background */
+  const _code = roomCode, _id = myId;
+  if (_code && _id) remove(ref(db,'rooms/'+_code+'/players/'+_id)).catch(()=>{});
+  /* 4. Reset all state */
+  roomRef=null; roomCode=null; myId=null; isHost=false;
+  gs=null; selCard=null; lastTmrRunning=null; didFlip=false;
+  sessionStorage.removeItem('tb_id');
 }
 
-// ─────────────────────────────────────────
-// WAITING ROOM
-// ─────────────────────────────────────────
+/* ════════════════════════════════════════
+   WAITING ROOM
+════════════════════════════════════════ */
 function enterWaiting() {
-  $('displayRoomCode').textContent = roomCode;
-  $('hostCountWrap').style.display = isHost ? '' : 'none';
-  $('hostStartWrap').style.display = isHost ? '' : 'none';
-  $('guestWaitMsg').style.display  = isHost ? 'none' : '';
+  el('DISP_CODE').textContent = roomCode;
+  el('HOST_CNT_WRAP').style.display  = isHost ? '' : 'none';
+  el('HOST_START_WRAP').style.display= isHost ? '' : 'none';
+  el('GUEST_WAIT').style.display     = isHost ? 'none' : '';
   if (isHost) buildCntBtns();
-  showScreen('waiting');
-  onValue(roomRef, onRoomChange);
+  go('waiting');
+  onValue(roomRef, onSnap);   // single listener for entire session
 }
 
 function buildCntBtns() {
-  const row = $('hostCntRow'); row.innerHTML = '';
+  const row = el('HOST_CNT_ROW'); row.innerHTML = '';
   [4,5,6,7,8].forEach(n => {
     const b = document.createElement('button');
-    b.className = 'cnt-btn';
-    b.textContent = n;
-    b.addEventListener('click', () => update(roomRef, { playerCount: n }));
+    b.className = 'cntbtn'; b.textContent = n;
+    b.addEventListener('click', () => update(roomRef, {playerCount: n}));
     row.appendChild(b);
   });
 }
 
 function copyCode() {
-  const msg = 'タイムボムの部屋コード：' + roomCode + '\n' + location.href;
-  navigator.clipboard.writeText(msg)
-    .then(() => alert('コピーしました！\nコード「' + roomCode + '」を友達に送ってください'))
-    .catch(() => alert('コード: ' + roomCode));
+  const txt = '【タイムボム】部屋コード：'+roomCode+'\n'+location.href;
+  navigator.clipboard.writeText(txt)
+    .then(()=>alert('コピーしました！\nコード「'+roomCode+'」を友達に送ってね'))
+    .catch(()=>alert('コード: '+roomCode));
 }
 
-// ─────────────────────────────────────────
-// ROOM LISTENER
-// ─────────────────────────────────────────
-function onRoomChange(snap) {
-  if (!snap.exists()) { leaveRoom(); return; }
-  const prev = gameState?.status;
-  gameState = snap.val();
-  const status = gameState.status;
-
-  // Sync host count buttons
+function renderWaiting() {
+  const list = el('PLAYER_LIST'); list.innerHTML = '';
+  Object.entries(gs.players||{}).forEach(([id,p]) => {
+    const r = document.createElement('div');
+    r.className = 'prow'+(id===myId?' me':'');
+    r.innerHTML = `<div class="pdot"></div><b>${p.name}</b>`
+      +(id===myId ? '<span style="font-size:11px;color:var(--mut);margin-left:auto">あなた</span>':'')
+      +(gs.host===id ? '<span style="font-size:11px;color:var(--ora);margin-left:auto">HOST</span>':'');
+    list.appendChild(r);
+  });
   if (isHost) {
-    $('hostCntRow').querySelectorAll('.cnt-btn').forEach((b,i) => {
-      b.classList.toggle('active', [4,5,6,7,8][i] === gameState.playerCount);
-    });
+    el('HOST_CNT_ROW').querySelectorAll('.cntbtn').forEach((b,i)=>
+      b.classList.toggle('on',[4,5,6,7,8][i]===gs.playerCount));
   }
+}
 
-  if (status === 'waiting') {
-    renderWaitingPlayers();
+/* ════════════════════════════════════════
+   MAIN SNAPSHOT LISTENER
+════════════════════════════════════════ */
+function onSnap(snap) {
+  if (!snap.exists()) { leaveRoom(); return; }
+  const prev = gs?.status;
+  gs = snap.val();
+  const st = gs.status;
+
+  if (st === 'waiting') {
+    if (el('waiting').classList.contains('active')) renderWaiting();
     return;
   }
 
-  if (status === 'role_reveal') {
-    if (prev !== 'role_reveal') showMyRole();
+  if (st === 'role_reveal') {
+    if (prev !== 'role_reveal') { didFlip=false; showMyRole(); }
     else updateReadyStatus();
     return;
   }
 
-  if (status === 'playing') {
-    const nowRunning = !!(gameState.timer?.running);
-    if (prev !== 'playing') { selectedCard = null; renderGameUI(); showScreen('game'); }
-    else if ($('game').classList.contains('active')) renderGameUI();
-    if (nowRunning !== lastTimerRunning) { lastTimerRunning = nowRunning; syncTimer(); }
+  if (st === 'playing') {
+    if (prev !== 'playing') { selCard=null; renderGame(); go('game'); }
+    else if (el('game').classList.contains('active')) renderGame();
+    const nowRun = !!(gs.timer?.running);
+    if (nowRun !== lastTmrRunning) { lastTmrRunning=nowRun; syncTmr(); }
     return;
   }
 
-  if (status === 'result') { stopTimer(); renderResult(); showScreen('result'); }
+  if (st === 'result') { stopTmr(); renderResult(); go('result'); }
 }
 
-function renderWaitingPlayers() {
-  const list = $('waitingPlayerList'); list.innerHTML = '';
-  Object.entries(gameState.players || {}).forEach(([id, p]) => {
-    const row = document.createElement('div');
-    row.className = 'player-row' + (id === myId ? ' me' : '');
-    row.innerHTML = `<div class="player-dot"></div><span style="font-weight:700">${p.name}</span>`
-      + (id === myId   ? '<span style="font-size:11px;color:var(--muted);margin-left:auto">あなた</span>' : '')
-      + (gameState.host === id ? '<span style="font-size:11px;color:var(--accent2);margin-left:auto">ホスト</span>' : '');
-    list.appendChild(row);
-  });
-}
+/* ════════════════════════════════════════
+   HOST START
+════════════════════════════════════════ */
+async function hostStart() {
+  const ids = Object.keys(gs.players||{});
+  if (ids.length < 2) { err('2人以上必要です'); return; }
+  const conf = PT[gs.playerCount]||PT[4];
 
-// ─────────────────────────────────────────
-// HOST START GAME
-// ─────────────────────────────────────────
-async function hostStartGame() {
-  const players = gameState.players || {};
-  const ids = Object.keys(players);
-  if (ids.length < 2) { showError('2人以上必要です'); return; }
-  const conf = PLAYER_TABLE[gameState.playerCount] || PLAYER_TABLE[4];
-
-  // Assign roles
-  let pool = [];
-  for (let i = 0; i < conf.t; i++) pool.push('terrorist');
-  for (let i = 0; i < conf.a; i++) pool.push('agent');
+  // roles
+  let pool = [...Array(conf.t).fill('terrorist'), ...Array(conf.a).fill('agent')];
   while (pool.length < ids.length) pool.push('agent');
   pool = shuffle(pool).slice(0, ids.length);
 
-  // Build deck
-  let deck = [{ type: 'bomb' }];
-  for (let i = 0; i < conf.w; i++) deck.push({ type: 'safe' });
+  // deck
+  let deck = [{type:'bomb'}, ...Array(conf.w).fill(0).map(()=>({type:'safe'}))];
   deck = shuffle(deck);
   const perPlayer = Math.floor(deck.length / ids.length);
 
-  const roles = {}, cards = {};
-  ids.forEach((id, i) => {
+  const roles={}, cards={};
+  ids.forEach((id,i)=>{
     roles[id] = pool[i];
-    cards[id] = deck.splice(0, perPlayer).map(c => ({ ...c, revealed: false }));
+    cards[id] = deck.splice(0,perPlayer).map(c=>({...c,revealed:false}));
   });
 
-  // Reset ready flags
-  const readyUpdate = {};
-  ids.forEach(id => { readyUpdate[id + '/ready'] = false; });
+  // reset ready flags
+  const readyReset = {};
+  ids.forEach(id => { readyReset[id+'/ready'] = false; });
 
-  showLoading('ゲームを開始中…');
+  load('開始中…');
   try {
-    await update(ref(db, 'rooms/' + roomCode + '/players'), readyUpdate);
+    await update(ref(db,'rooms/'+roomCode+'/players'), readyReset);
     await update(roomRef, {
-      status: 'role_reveal', roles, cards,
-      round: 1, totalRounds: perPlayer,
-      wiresCut: 0, wiresNeeded: conf.w,
-      cutsThisRound: {},
-      timer: { running: false, secondsLeft: ROUND_SEC },
+      status:'role_reveal', roles, cards,
+      round:1, totalRounds:perPlayer,
+      wiresCut:0, wiresNeeded:conf.w,
+      cutsThisRound:{},
+      timer:{running:false, secondsLeft:ROUND_SEC},
     });
-    hideLoading();
-  } catch(e) { hideLoading(); showError('開始失敗: ' + e.message); }
+    unload();
+  } catch(e) { unload(); err('開始失敗: '+e.message); }
 }
 
-// ─────────────────────────────────────────
-// ROLE REVEAL — each player on own device
-// ─────────────────────────────────────────
+/* ════════════════════════════════════════
+   ROLE REVEAL — each player on own device
+════════════════════════════════════════ */
 function showMyRole() {
-  roleFlipped = false;
-  $('roleCard').classList.remove('flipped');
-  $('roleReadyWrap').style.display = 'none';
-
-  const role = (gameState.roles || {})[myId];
+  const role = (gs.roles||{})[myId];
   if (!role) return;
-
-  const back = $('roleBack');
-  back.className = 'role-card-face role-back ' + role;
-  $('roleIcon').textContent = role === 'terrorist' ? '🧨' : '🕵️';
-  $('roleName').textContent = role === 'terrorist' ? 'テロリスト' : 'エージェント';
-  $('roleName').className   = 'role-name ' + role;
-  $('myRolePlayerName').textContent = myName;
-  $('roleDesc').textContent = role === 'terrorist'
-    ? '爆弾カードをカットさせろ！役職は絶対にバレるな。'
-    : '安全ワイヤーを全てカットして爆弾を解除せよ！';
-
-  showScreen('roleReveal');
+  el('RCARD').classList.remove('flip');
+  el('READY_WRAP').style.display = 'none';
+  el('RBACK').className = 'rface rback '+role;
+  el('RICON').textContent = role==='terrorist' ? '🧨' : '🕵️';
+  el('RNAME').textContent = role==='terrorist' ? 'テロリスト' : 'エージェント';
+  el('RNAME').className   = 'rname '+role;
+  el('ROLE_PNAME').textContent = myName;
+  el('RDESC').textContent = role==='terrorist'
+    ? '爆弾カードをカットさせれば勝利！役職を隠しながら工作しろ。'
+    : '安全ワイヤーを全てカットすれば勝利！テロリストを見つけ出せ。';
+  go('role');
 }
 
-function flipRoleCard() {
-  if (roleFlipped) return;
-  roleFlipped = true;
-  $('roleCard').classList.add('flipped');
-  $('roleReadyWrap').style.display = 'flex';
+function flipRole() {
+  if (didFlip) return;
+  didFlip = true;
+  el('RCARD').classList.add('flip');
+  el('READY_WRAP').style.display = 'flex';
   updateReadyStatus();
 }
 
 function updateReadyStatus() {
-  if (!$('roleReveal').classList.contains('active')) return;
-  const players = gameState.players || {};
+  if (!el('role').classList.contains('active')) return;
+  const players = gs.players||{};
   const total = Object.keys(players).length;
-  const readyCount = Object.values(players).filter(p => p.ready).length;
-  $('roleReadyStatus').textContent = `準備完了: ${readyCount} / ${total}`;
+  const ready = Object.values(players).filter(p=>p.ready).length;
+  el('READY_STATUS').textContent = `準備完了: ${ready} / ${total}`;
 }
 
 async function markReady() {
-  $('btn-role-ready').disabled = true;
-  $('btn-role-ready').textContent = '待機中…';
+  el('B_READY').disabled = true;
+  el('B_READY').textContent = '待機中…';
   try {
-    await update(ref(db, 'rooms/' + roomCode + '/players/' + myId), { ready: true });
-    // Check if all ready — host triggers game start
-    if (isHost) {
-      const snap = await get(ref(db, 'rooms/' + roomCode + '/players'));
-      const players = snap.val() || {};
-      const allReady = Object.values(players).every(p => p.ready);
-      if (allReady) await update(roomRef, { status: 'playing' });
-    }
-  } catch(e) { showError('エラー: ' + e.message); }
+    await update(ref(db,'rooms/'+roomCode+'/players/'+myId), {ready:true});
+    /* Every player checks if all are ready and the host fires the transition.
+       We re-check on every snapshot via updateReadyStatus + onSnap will
+       detect when host sets status→playing.
+       Host additionally checks immediately after own ready: */
+    if (isHost) await checkAllReady();
+  } catch(e) { err('エラー: '+e.message); }
 }
 
-// ─────────────────────────────────────────
-// GAME UI
-// ─────────────────────────────────────────
-function renderGameUI() {
-  if (!gameState) return;
-  $('roundNum').textContent      = gameState.round || 1;
-  $('totalRounds').textContent   = gameState.totalRounds || '?';
-  $('wiresCutCount').textContent = gameState.wiresCut || 0;
-  $('wiresNeeded').textContent   = gameState.wiresNeeded || '?';
+async function checkAllReady() {
+  const snap = await get(ref(db,'rooms/'+roomCode+'/players'));
+  const players = snap.val()||{};
+  if (Object.values(players).every(p=>p.ready))
+    await update(roomRef, {status:'playing'});
+}
 
-  const tally = $('wireTally'); tally.innerHTML = '';
-  for (let i = 0; i < (gameState.wiresNeeded || 0); i++) {
-    const d = document.createElement('div');
-    d.className = 'wire-dot' + (i < (gameState.wiresCut || 0) ? ' cut' : '');
+/* ════════════════════════════════════════
+   GAME RENDERING
+════════════════════════════════════════ */
+function renderGame() {
+  if (!gs) return;
+  el('G_ROUND').textContent = gs.round||1;
+  el('G_TOTAL').textContent = gs.totalRounds||'?';
+  el('G_WCUT').textContent  = gs.wiresCut||0;
+  el('G_WTOT').textContent  = gs.wiresNeeded||'?';
+
+  // wire tally
+  const tally = el('WTALLY'); tally.innerHTML='';
+  for (let i=0;i<(gs.wiresNeeded||0);i++){
+    const d=document.createElement('div');
+    d.className='wdot'+(i<(gs.wiresCut||0)?' cut':'');
     tally.appendChild(d);
   }
 
-  // Timer (host controls only)
-  $('timerBtns').style.display = isHost ? 'flex' : 'none';
-  $('btn-timer-toggle').textContent = gameState.timer?.running ? '⏸ 停止' : '▶ 開始';
+  // timer buttons: only host sees them
+  el('TIMER_BTNS').style.display = isHost?'flex':'none';
+  el('B_TIMER_TOG').textContent  = gs.timer?.running?'⏸ 停止':'▶ 開始';
 
-  const cuts = gameState.cutsThisRound || {};
+  // turn banner
+  const cuts = gs.cutsThisRound||{};
   const myTurn = !cuts[myId];
-  const remaining = Object.keys(gameState.players || {}).filter(id => !cuts[id]);
-  $('turnBanner').innerHTML = myTurn
-    ? '<div class="cut-banner">✂️ あなたのターン！カードを選んでカットしてください</div>'
-    : `<div class="wait-banner">⏳ 他のプレイヤーのカット待ち（残り ${remaining.length}人）</div>`;
+  const waiting = Object.keys(gs.players||{}).filter(id=>!cuts[id]);
+  el('TURN_BANNER').innerHTML = myTurn
+    ? '<div class="banner-go">✂️ あなたのターン！カードを選んでカットしてください</div>'
+    : `<div class="banner-wait">⏳ 他のプレイヤーのカット待ち（残り ${waiting.length}人）</div>`;
 
-  renderMyHand();
-  renderPlayersGrid();
+  renderHand();
+  renderGrid();
 
-  const allCut = Object.keys(cuts).length >= Object.keys(gameState.players || {}).length;
-  $('nextRoundWrap').style.display = (isHost && allCut) ? '' : 'none';
+  const allCut = Object.keys(cuts).length >= Object.keys(gs.players||{}).length;
+  el('NEXT_ROUND_WRAP').style.display = (isHost&&allCut)?'':'none';
 }
 
-function renderMyHand() {
-  const myCards = (gameState.cards || {})[myId] || [];
-  const alreadyCut = !!(gameState.cutsThisRound || {})[myId];
-  const container = $('myHandCards'); container.innerHTML = '';
-
-  myCards.forEach((card, idx) => {
-    const el = document.createElement('div');
+function renderHand() {
+  const myCards = (gs.cards||{})[myId]||[];
+  const alreadyCut = !!(gs.cutsThisRound||{})[myId];
+  const box = el('MY_HAND'); box.innerHTML='';
+  myCards.forEach((card,idx)=>{
+    const c=document.createElement('div');
     if (card.revealed) {
-      el.className = 'hand-card revealed-' + card.type;
-      el.innerHTML = `<span class="card-icon">${card.type==='bomb'?'💣':'✅'}</span><span>${card.type==='bomb'?'爆弾':'安全'}</span>`;
+      c.className='hcard '+(card.type==='bomb'?'bomb':'safe');
+      c.innerHTML=`<span style="font-size:22px">${card.type==='bomb'?'💣':'✅'}</span><span>${card.type==='bomb'?'爆弾':'安全'}</span>`;
     } else if (alreadyCut) {
-      el.className = 'hand-card';
-      el.style.cssText = 'opacity:.35;cursor:default;';
-      el.innerHTML = `<span class="card-icon">🃏</span><span>済</span>`;
+      c.className='hcard done';
+      c.innerHTML=`<span style="font-size:22px">🃏</span><span>済</span>`;
     } else {
-      el.className = 'hand-card' + (selectedCard === idx ? ' selected' : '');
-      el.innerHTML = `<span class="card-icon">🃏</span><span>${idx+1}枚目</span>`;
-      el.addEventListener('click', () => { selectedCard = idx; renderMyHand(); });
+      c.className='hcard'+(selCard===idx?' sel':'');
+      c.innerHTML=`<span style="font-size:22px">🃏</span><span>${idx+1}枚目</span>`;
+      c.addEventListener('click',()=>{selCard=idx; renderHand();});
     }
-    container.appendChild(el);
+    box.appendChild(c);
   });
-
-  const btn = $('cutBtn'), hint = $('cutBtnHint');
-  if (alreadyCut)           { btn.disabled = true;  hint.textContent = '今ラウンドはカット済み'; }
-  else if (selectedCard === null) { btn.disabled = true;  hint.textContent = 'カードを選んでください'; }
-  else                            { btn.disabled = false; hint.textContent = `${selectedCard+1}枚目を選択中`; }
+  const btn=el('B_CUT'), hint=el('CUT_HINT');
+  if (alreadyCut)          {btn.disabled=true; hint.textContent='今ラウンドはカット済み';}
+  else if (selCard===null) {btn.disabled=true; hint.textContent='カードを選んでください';}
+  else                     {btn.disabled=false;hint.textContent=`${selCard+1}枚目を選択中`;}
 }
 
-function renderPlayersGrid() {
-  const grid = $('playersGrid'); grid.innerHTML = '';
-  const cuts = gameState.cutsThisRound || {};
-  Object.entries(gameState.players || {}).forEach(([pid, p]) => {
-    const cards = (gameState.cards || {})[pid] || [];
-    const tile = document.createElement('div');
-    tile.className = 'player-tile' + (pid === myId ? ' is-me' : '');
-    const nr = document.createElement('div');
-    nr.style = 'display:flex;align-items:center;gap:5px;';
-    nr.innerHTML = `<span class="tile-name">${p.name}</span>`
-      + (pid === myId ? '<span style="font-size:10px;color:var(--accent2)">YOU</span>' : '')
-      + (cuts[pid]    ? '<span style="font-size:10px;color:var(--safe);margin-left:auto">✓</span>' : '');
-    const cr = document.createElement('div'); cr.className = 'tile-cards';
-    cards.forEach(c => {
-      const mc = document.createElement('div');
-      if (!c.revealed) { mc.className='mini-card'; mc.textContent='?'; mc.style.color='var(--muted)'; }
-      else { mc.className='mini-card revealed-'+c.type; mc.textContent=c.type==='bomb'?'💣':'✅'; }
-      cr.appendChild(mc);
+function renderGrid() {
+  const grid=el('PGRID'); grid.innerHTML='';
+  const cuts=gs.cutsThisRound||{};
+  Object.entries(gs.players||{}).forEach(([pid,p])=>{
+    const cards=(gs.cards||{})[pid]||[];
+    const tile=document.createElement('div');
+    tile.className='ptile'+(pid===myId?' me':'');
+    const nr=document.createElement('div');
+    nr.style='display:flex;align-items:center;gap:5px;';
+    nr.innerHTML=`<span class="tname">${p.name}</span>`
+      +(pid===myId?'<span style="font-size:10px;color:var(--ora)">YOU</span>':'')
+      +(cuts[pid]?'<span style="font-size:10px;color:var(--grn);margin-left:auto">✓</span>':'');
+    const cr=document.createElement('div'); cr.className='tcards';
+    cards.forEach(c=>{
+      const m=document.createElement('div');
+      if (!c.revealed){m.className='mcard';m.textContent='?';m.style.color='var(--mut)';}
+      else{m.className='mcard '+c.type;m.textContent=c.type==='bomb'?'💣':'✅';}
+      cr.appendChild(m);
     });
-    tile.appendChild(nr); tile.appendChild(cr);
-    grid.appendChild(tile);
+    tile.appendChild(nr); tile.appendChild(cr); grid.appendChild(tile);
   });
 }
 
-// ─────────────────────────────────────────
-// CUT
-// ─────────────────────────────────────────
-async function executeCut() {
-  if (selectedCard === null) return;
-  const myCards = (gameState.cards || {})[myId];
+/* ════════════════════════════════════════
+   CUT
+════════════════════════════════════════ */
+async function doCut() {
+  if (selCard===null) return;
+  const myCards=(gs.cards||{})[myId];
   if (!myCards) return;
-  const card = myCards[selectedCard];
-  if (!card || card.revealed) return;
+  const card=myCards[selCard];
+  if (!card||card.revealed) return;
 
-  const updated = myCards.map((c,i) => i===selectedCard ? {...c,revealed:true} : c);
-  const prev = selectedCard;
-  selectedCard = null;
+  const updated=myCards.map((c,i)=>i===selCard?{...c,revealed:true}:c);
+  const prev=selCard; selCard=null;
 
-  const upd = {};
-  upd[`rooms/${roomCode}/cards/${myId}`] = updated;
-  upd[`rooms/${roomCode}/cutsThisRound/${myId}`] = true;
+  const u={};
+  u[`rooms/${roomCode}/cards/${myId}`]=updated;
+  u[`rooms/${roomCode}/cutsThisRound/${myId}`]=true;
 
-  if (card.type === 'bomb') {
-    upd[`rooms/${roomCode}/status`]    = 'result';
-    upd[`rooms/${roomCode}/winner`]    = 'terrorist';
-    upd[`rooms/${roomCode}/winReason`] = '💣 爆弾がカットされた！テロリストの勝利！';
+  if (card.type==='bomb') {
+    u[`rooms/${roomCode}/status`]='result';
+    u[`rooms/${roomCode}/winner`]='terrorist';
+    u[`rooms/${roomCode}/winReason`]='💣 爆弾がカットされた！テロリストの勝利！';
   } else {
-    const nw = (gameState.wiresCut || 0) + 1;
-    upd[`rooms/${roomCode}/wiresCut`] = nw;
-    if (nw >= (gameState.wiresNeeded || 0)) {
-      upd[`rooms/${roomCode}/status`]    = 'result';
-      upd[`rooms/${roomCode}/winner`]    = 'agent';
-      upd[`rooms/${roomCode}/winReason`] = '✅ 全ての安全ワイヤーをカット！エージェントの勝利！';
+    const nw=(gs.wiresCut||0)+1;
+    u[`rooms/${roomCode}/wiresCut`]=nw;
+    if (nw>=(gs.wiresNeeded||0)){
+      u[`rooms/${roomCode}/status`]='result';
+      u[`rooms/${roomCode}/winner`]='agent';
+      u[`rooms/${roomCode}/winReason`]='✅ 全ての安全ワイヤーをカット！エージェントの勝利！';
     }
   }
-  try { await update(ref(db), upd); }
-  catch(e) { selectedCard = prev; showError('カット失敗: ' + e.message); }
+  try { await update(ref(db),u); }
+  catch(e){ selCard=prev; err('カット失敗: '+e.message); }
 }
 
-// ─────────────────────────────────────────
-// TIMER
-// ─────────────────────────────────────────
-async function hostToggleTimer() {
+/* ════════════════════════════════════════
+   TIMER
+════════════════════════════════════════ */
+async function hostTimerToggle() {
   if (!isHost) return;
-  const t = gameState.timer || {};
+  const t=gs.timer||{};
   if (t.running) {
-    const elapsed = Math.floor((Date.now() - t.startedAt) / 1000);
-    const rem = Math.max(0, (t.secondsLeft || ROUND_SEC) - elapsed);
-    await update(ref(db,'rooms/'+roomCode+'/timer'), { running:false, secondsLeft:rem, startedAt:null });
+    const elapsed=Math.floor((Date.now()-t.startedAt)/1000);
+    const rem=Math.max(0,(t.secondsLeft||ROUND_SEC)-elapsed);
+    await update(ref(db,'rooms/'+roomCode+'/timer'),{running:false,secondsLeft:rem,startedAt:null});
   } else {
-    await update(ref(db,'rooms/'+roomCode+'/timer'), { running:true, secondsLeft:t.secondsLeft||ROUND_SEC, startedAt:Date.now() });
+    await update(ref(db,'rooms/'+roomCode+'/timer'),{running:true,secondsLeft:t.secondsLeft||ROUND_SEC,startedAt:Date.now()});
   }
 }
 
-async function hostResetTimer() {
+async function hostTimerReset() {
   if (!isHost) return;
-  stopTimer();
-  await update(ref(db,'rooms/'+roomCode+'/timer'), { running:false, secondsLeft:ROUND_SEC, startedAt:null });
+  stopTmr();
+  await update(ref(db,'rooms/'+roomCode+'/timer'),{running:false,secondsLeft:ROUND_SEC,startedAt:null});
 }
 
-function syncTimer() {
-  stopTimer();
-  const t = gameState.timer || { running:false, secondsLeft:ROUND_SEC };
-  if (t.running && t.startedAt) {
-    const elapsed = Math.floor((Date.now() - t.startedAt) / 1000);
-    tickDown(Math.max(0, (t.secondsLeft||ROUND_SEC) - elapsed));
+function syncTmr() {
+  stopTmr();
+  const t=gs.timer||{running:false,secondsLeft:ROUND_SEC};
+  if (t.running&&t.startedAt) {
+    const elapsed=Math.floor((Date.now()-t.startedAt)/1000);
+    tickDown(Math.max(0,(t.secondsLeft||ROUND_SEC)-elapsed));
   } else {
-    updateTimerUI(t.secondsLeft ?? ROUND_SEC);
+    setTmrUI(t.secondsLeft??ROUND_SEC);
   }
 }
 
 function tickDown(s) {
-  updateTimerUI(s);
-  timerInterval = setInterval(async () => {
+  setTmrUI(s);
+  tmr=setInterval(async()=>{
     s--;
-    if (s <= 0) {
-      stopTimer(); updateTimerUI(0);
-      if (isHost && gameState?.status === 'playing')
-        await update(roomRef, { status:'result', winner:'terrorist', winReason:'⏰ 時間切れ！テロリストの勝利！' });
+    if (s<=0){
+      stopTmr(); setTmrUI(0);
+      if (isHost&&gs?.status==='playing')
+        await update(roomRef,{status:'result',winner:'terrorist',winReason:'⏰ 時間切れ！テロリストの勝利！'});
       return;
     }
-    updateTimerUI(s);
-  }, 1000);
+    setTmrUI(s);
+  },1000);
 }
 
-function stopTimer() { clearInterval(timerInterval); timerInterval = null; }
+function stopTmr(){clearInterval(tmr);tmr=null;}
 
-function updateTimerUI(s) {
-  if (s==null) s = ROUND_SEC;
-  const v = $('timerVal'), r = $('timerRing');
-  if (v) v.textContent = String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
-  if (r) {
-    const ratio = s / ROUND_SEC;
-    r.style.strokeDashoffset = 301.6 * (1 - ratio);
-    r.style.stroke = ratio>.5?'var(--safe)':ratio>.25?'var(--accent2)':'var(--accent)';
-  }
-  if (v) v.style.color = s<=10?'var(--accent)':'var(--text)';
+function setTmrUI(s){
+  if(s==null)s=ROUND_SEC;
+  const v=el('TVAL'),r=el('TRING');
+  if(v)v.textContent=pad(Math.floor(s/60))+':'+pad(s%60);
+  if(r){const ratio=s/ROUND_SEC;r.style.strokeDashoffset=301.6*(1-ratio);r.style.stroke=ratio>.5?'var(--grn)':ratio>.25?'var(--ora)':'var(--red)';}
+  if(v)v.style.color=s<=10?'var(--red)':'var(--txt)';
 }
+const pad=n=>String(n).padStart(2,'0');
 
-// ─────────────────────────────────────────
-// NEXT ROUND
-// ─────────────────────────────────────────
-async function hostNextRound() {
-  if (!isHost) return;
-  const next = (gameState.round||1) + 1;
-  stopTimer();
-  if (next > (gameState.totalRounds||4)) {
-    await update(roomRef, { status:'result', winner:'terrorist', winReason:'ラウンド終了！爆弾は解除できなかった…テロリストの勝利！' });
+/* ════════════════════════════════════════
+   NEXT ROUND
+════════════════════════════════════════ */
+async function hostNextRound(){
+  if(!isHost)return;
+  stopTmr();
+  const next=(gs.round||1)+1;
+  if(next>(gs.totalRounds||4)){
+    await update(roomRef,{status:'result',winner:'terrorist',winReason:'ラウンド終了！爆弾は解除できなかった…テロリストの勝利！'});
     return;
   }
-  await update(roomRef, { round:next, cutsThisRound:{}, timer:{ running:false, secondsLeft:ROUND_SEC, startedAt:null } });
+  await update(roomRef,{round:next,cutsThisRound:{},timer:{running:false,secondsLeft:ROUND_SEC,startedAt:null}});
 }
 
-// ─────────────────────────────────────────
-// RESULT
-// ─────────────────────────────────────────
-function renderResult() {
-  const winner = gameState.winner || 'terrorist';
-  $('result').className = 'screen ' + (winner==='agent'?'agent-win':'terrorist-win');
-  $('resultIcon').textContent = winner==='agent'?'🎉':'💥';
-  const t = $('resultTitle');
-  t.className = 'result-title ' + (winner==='agent'?'agent-color':'terrorist-color');
-  t.textContent = winner==='agent'?'AGENTS WIN！':'TERRORISTS WIN！';
-  $('resultReason').textContent = gameState.winReason||'';
-
-  const rolesEl = $('resultRoles'); rolesEl.innerHTML='';
-  Object.entries(gameState.players||{}).forEach(([pid,p]) => {
-    const role = (gameState.roles||{})[pid];
-    const col  = role==='agent'?'var(--safe)':'var(--accent)';
-    const lbl  = role==='agent'?'🕵️ エージェント':'🧨 テロリスト';
-    const chip = document.createElement('div');
-    chip.style='display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;';
-    chip.innerHTML=`<span style="font-weight:700">${p.name}</span>${pid===myId?'<span style="font-size:10px;color:var(--accent2)">YOU</span>':''}<span style="color:${col};font-size:13px;margin-left:auto">${lbl}</span>`;
-    rolesEl.appendChild(chip);
+/* ════════════════════════════════════════
+   RESULT
+════════════════════════════════════════ */
+function renderResult(){
+  const w=gs.winner||'terrorist';
+  el('result').className='screen '+(w==='agent'?'aw':'tw');
+  el('R_ICON').textContent=w==='agent'?'🎉':'💥';
+  el('R_TITLE').className='rtitle '+(w==='agent'?'ac':'tc');
+  el('R_TITLE').textContent=w==='agent'?'AGENTS WIN！':'TERRORISTS WIN！';
+  el('R_REASON').textContent=gs.winReason||'';
+  const re=el('R_ROLES'); re.innerHTML='';
+  Object.entries(gs.players||{}).forEach(([pid,p])=>{
+    const role=(gs.roles||{})[pid];
+    const col=role==='agent'?'var(--grn)':'var(--red)';
+    const lbl=role==='agent'?'🕵️ エージェント':'🧨 テロリスト';
+    const chip=document.createElement('div');
+    chip.style='display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--car);border:1px solid var(--bdr);border-radius:8px;';
+    chip.innerHTML=`<b>${p.name}</b>${pid===myId?'<span style="font-size:10px;color:var(--ora)">YOU</span>':''}<span style="color:${col};font-size:13px;margin-left:auto">${lbl}</span>`;
+    re.appendChild(chip);
   });
 }
 
-async function hostRestartGame() {
-  if (!isHost) { showError('ホストだけが再スタートできます'); return; }
-  stopTimer();
-  // Reset ready flags for all players
-  const players = gameState.players||{};
-  const readyReset = {};
-  Object.keys(players).forEach(id => { readyReset[id+'/ready'] = false; });
-  await update(ref(db,'rooms/'+roomCode+'/players'), readyReset);
-  await update(roomRef, {
-    status:'waiting', roles:null, cards:null, round:null,
-    totalRounds:null, wiresCut:null, wiresNeeded:null,
-    cutsThisRound:null, winner:null, winReason:null, timer:null,
-  });
-  showScreen('waiting');
+async function hostRestart(){
+  if(!isHost){err('ホストだけが再スタートできます');return;}
+  stopTmr();
+  const ids=Object.keys(gs.players||{});
+  const rr={}; ids.forEach(id=>{rr[id+'/ready']=false;});
+  await update(ref(db,'rooms/'+roomCode+'/players'),rr);
+  await update(roomRef,{status:'waiting',roles:null,cards:null,round:null,totalRounds:null,wiresCut:null,wiresNeeded:null,cutsThisRound:null,winner:null,winReason:null,timer:null});
+  go('waiting');
 }
 
-function doReset() {
-  closeModal('resetModal');
-  if (isHost) hostRestartGame(); else leaveRoom();
+function doReset(){
+  mclose('M_RESET');
+  if(isHost) hostRestart(); else leaveRoom();
 }
 
-// ─────────────────────────────────────────
-// UTILS
-// ─────────────────────────────────────────
-function shuffle(arr) {
-  const a=[...arr];
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
-  return a;
+/* ════════════════════════════════════════
+   UTILS
+════════════════════════════════════════ */
+function genId(){ return 'p'+Date.now()+Math.random().toString(36).slice(2,7); }
+function saveMyId(id){ try{sessionStorage.setItem('tb_id',id);}catch(_){} }
+function shuffle(a){
+  const r=[...a];
+  for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+  return r;
 }
 </script>
 </body>
